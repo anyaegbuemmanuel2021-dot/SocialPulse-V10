@@ -1,0 +1,25 @@
+{
+  "name": "socialpulse-v10",
+  "version": "1.0.0",
+  "description": "TikTok-level social video platform — Appwrite + Vue 3",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "setup": "node appwrite/setup/setup-collections.js"
+  },
+  "dependencies": {
+    "appwrite": "^13.0.0",
+    "vue": "^3.4.0",
+    "vue-router": "^4.2.5",
+    "pinia": "^2.1.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
