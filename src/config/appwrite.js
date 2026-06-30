@@ -1,4 +1,4 @@
-import { Client, Account, Databases, Storage, Query } from 'appwrite'
+import { Client, Account, Databases, Storage, Query, ID } from 'appwrite'
 
 const client = new Client()
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT || 'https://cloud.appwrite.io/v1')
@@ -41,5 +41,5 @@ export const B = {
 }
 
 // Helpers
-export const uid  = () => 'unique()'
+export const uid  = () => ID.unique()
 export const now  = () => new Date().toISOString()
