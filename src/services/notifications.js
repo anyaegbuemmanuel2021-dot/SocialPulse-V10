@@ -1,4 +1,4 @@
-import { databases, realtime, DB, C, uid, now } from '@/config/appwrite'
+import { databases, client, DB, C, uid, now } from '@/config/appwrite'
 import { Query } from 'appwrite'
 
 export async function createNotification (userId, actorId, type, extras = {}) {
@@ -70,9 +70,16 @@ export function notifyMention (recipientId, actorId, videoId, commentId) {
 }
 
 // ── Real-time subscription ────────────────────────────────────────────────────
-export function subscribeNotifications (userId, cb) {
-  return realtime.subscribe(
+export function subscribeNotifications(userId, cb) {
+  return client.subscribe(
     `databases.${DB}.collections.${C.NOTIFICATIONS}.documents`,
-    event => { if (event.payload?.user_id === userId) cb(event) }
+    (event) => {
+      if (event.payload?.user_id === userId) {
+        cb(event)
+      }
+    }
   )
 }
+
+
+

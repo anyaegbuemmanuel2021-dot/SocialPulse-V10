@@ -1,4 +1,4 @@
-import { databases, storage, realtime, DB, C, B, uid, now } from '@/config/appwrite'
+import { databases, storage, client, DB, C, B, uid, now } from '@/config/appwrite'
 import { Query } from 'appwrite'
 
 export async function getOrCreateConversation (userId1, userId2) {
@@ -95,17 +95,24 @@ export async function getUnreadMessageCount (userId) {
 }
 
 // ── Real-time ─────────────────────────────────────────────────────────────────
-export function subscribeMessages (conversationId, cb) {
-  return realtime.subscribe(
+export function subscribeMessages(conversationId, cb) {
+  return client.subscribe(
     `databases.${DB}.collections.${C.MESSAGES}.documents`,
-    event => { if (event.payload?.conversation_id === conversationId) cb(event) }
+    (event) => {
+      if (event.payload?.conversation_id === conversationId) {
+        cb(event)
+      }
+    }
   )
 }
-
-export function subscribeConversations (userId, cb) {
-  return realtime.subscribe(
+export function subscribeConversations(userId, cb) {
+  return client.subscribe(
     `databases.${DB}.collections.${C.CONVERSATIONS}.documents`,
-    event => { if (event.payload?.participant_ids?.includes(userId)) cb(event) }
+    (event) => {
+      if (event.payload?.participant_ids?.includes(userId)) {
+        cb(event)
+      }
+    }
   )
 }
 
