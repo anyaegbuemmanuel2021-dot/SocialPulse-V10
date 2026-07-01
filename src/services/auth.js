@@ -66,3 +66,43 @@ export function currentUser    () { return _user    }
 export function currentProfile () { return _profile }
 export function isLoggedIn     () { return !!_user  }
 export function setProfile (p)  { _profile = p }
+
+// social login functions 
+
+//import { account } from '@/config/appwrite'
+import { OAuthProvider } from 'appwrite'
+
+const success = window.location.origin + '/'
+const failure = window.location.origin + '/login'
+
+export function loginWithGoogle() {
+    return account.createOAuth2Session(
+        OAuthProvider.Google,
+        success,
+        failure
+    )
+}
+
+export function loginWithApple() {
+    return account.createOAuth2Session(
+        OAuthProvider.Apple,
+        success,
+        failure
+    )
+}
+
+export function loginWithGithub() {
+    return account.createOAuth2Session(
+        OAuthProvider.Github,
+        success,
+        failure
+    )
+}
+
+export function loginWithFacebook() {
+    return account.createOAuth2Session(
+        OAuthProvider.Facebook,
+        success,
+        failure
+    )
+}

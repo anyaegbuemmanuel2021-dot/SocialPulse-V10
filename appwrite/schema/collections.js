@@ -25,11 +25,8 @@ export const COL = {
 
 // ── Bucket IDs ────────────────────────────────────────────────────────────────
 export const BUCK = {
-  VIDEOS:     'videos',
-  THUMBNAILS: 'thumbnails',
-  AVATARS:    'avatars',
-  COVERS:     'covers',
-  MESSAGES:   'messages_media',
+  MEDIA: 'media',
+  AVATARS: 'media',
 }
 
 // ── Schema Definitions ────────────────────────────────────────────────────────
@@ -241,16 +238,16 @@ export const SCHEMAS = {
 
   [COL.REPORTS]: {
     attributes: [
-      { key: 'reporter_id',       type: 'string',   required: true,  size: 36   },
-      { key: 'reported_user_id',  type: 'string',   required: false, size: 36   },
-      { key: 'reported_video_id', type: 'string',   required: false, size: 36   },
-      { key: 'reported_comment_id',type:'string',   required: false, size: 36   },
-      { key: 'report_type',       type: 'string',   required: true,  size: 20   },
-      { key: 'reason',            type: 'string',   required: true,  size: 1000 },
-      { key: 'status',            type: 'string',   required: false, size: 20   },
-      { key: 'admin_notes',       type: 'string',   required: false, size: 1000 },
-      { key: 'created_at',        type: 'datetime', required: true  },
-      { key: 'reviewed_at',       type: 'datetime', required: false },
+      { key: 'reporter_id',        type: 'string',   required: true,  size: 36   },
+      { key: 'reported_user_id',   type: 'string',   required: false, size: 36   },
+      { key: 'reported_video_id',  type: 'string',   required: false, size: 36   },
+      { key: 'reported_comment_id',type: 'string',   required: false, size: 36   },
+      { key: 'report_type',        type: 'string',   required: true,  size: 20   },
+      { key: 'reason',             type: 'string',   required: true,  size: 1000 },
+      { key: 'status',             type: 'string',   required: false, size: 20   },
+      { key: 'admin_notes',        type: 'string',   required: false, size: 1000 },
+      { key: 'created_at',         type: 'datetime', required: true  },
+      { key: 'reviewed_at',        type: 'datetime', required: false },
     ],
     indexes: [
       { key: 'idx_status',   type: 'key', attributes: ['status']     },
@@ -289,10 +286,33 @@ export const SCHEMAS = {
 }
 
 // ── Storage Bucket Definitions ─────────────────────────────────────────────────
+
 export const BUCKET_DEFS = [
-  { id: BUCK.VIDEOS,     name: 'Videos',           maxSize: 5368709120, types: ['video/mp4','video/webm','video/quicktime','video/x-msvideo'] },
-  { id: BUCK.THUMBNAILS, name: 'Thumbnails',        maxSize: 10485760,  types: ['image/jpeg','image/png','image/webp'] },
-  { id: BUCK.AVATARS,    name: 'Avatars',           maxSize: 5242880,   types: ['image/jpeg','image/png','image/webp','image/gif'] },
-  { id: BUCK.COVERS,     name: 'Cover Photos',      maxSize: 10485760,  types: ['image/jpeg','image/png','image/webp'] },
-  { id: BUCK.MESSAGES,   name: 'Message Media',     maxSize: 52428800,  types: ['image/jpeg','image/png','image/webp','application/pdf'] },
+  {
+    id: BUCK.MEDIA,
+    name: 'Media',
+    maxSize: 50000000, // 50 MB
+    types: [
+      'video/mp4',
+      'video/webm',
+      'video/quicktime',
+      'video/x-msvideo',
+      'image/jpeg',
+      'image/png',
+      'image/webp',
+      'image/gif',
+      'application/pdf'
+    ]
+  },
+  {
+    id: BUCK.AVATARS,
+    name: 'Avatars',
+    maxSize: 10000000, // 10 MB
+    types: [
+      'image/jpeg',
+      'image/png',
+      'image/webp',
+      'image/gif'
+    ]
+  }
 ]

@@ -33,11 +33,11 @@ export const C = {
 
 // Storage Buckets
 export const B = {
-  VIDEOS:     import.meta.env.VITE_BUCKET_VIDEOS      || 'videos',
-  THUMBNAILS: import.meta.env.VITE_BUCKET_THUMBNAILS  || 'thumbnails',
-  AVATARS:    import.meta.env.VITE_BUCKET_AVATARS     || 'avatars',
-  COVERS:     import.meta.env.VITE_BUCKET_COVERS      || 'covers',
-  MESSAGES:   import.meta.env.VITE_BUCKET_MESSAGES    || 'messages_media',
+  VIDEOS: 'media',
+  THUMBNAILS: 'media',
+  AVATARS: 'media',
+  COVERS: 'media',
+  MESSAGES: 'media',
 }
 
 // Helpers

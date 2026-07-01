@@ -179,9 +179,9 @@ export async function uploadThumbnail (file) {
   return storage.getFileView(B.THUMBNAILS, uploaded.$id)
 }
 
-export async function uploadAvatar (file) {
-  const uploaded = await storage.createFile(B.AVATARS, uid(), file)
-  return storage.getFileView(B.AVATARS, uploaded.$id)
+export async function uploadMessageMedia(file) {
+  const f = await storage.createFile(B.MESSAGES, uid(), file);
+  return storage.getFileView(B.MESSAGES, f.$id);
 }
 
 export async function uploadCover (file) {
