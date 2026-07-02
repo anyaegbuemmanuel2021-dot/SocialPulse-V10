@@ -184,7 +184,12 @@ export async function uploadMessageMedia(file) {
   return storage.getFileView(B.MESSAGES, f.$id);
 }
 
-export async function uploadCover (file) {
+export async function uploadAvatar(file) {
+  const uploaded = await storage.createFile(B.AVATARS, uid(), file)
+  return storage.getFileView(B.AVATARS, uploaded.$id)
+}
+
+export async function uploadCover(file) {
   const uploaded = await storage.createFile(B.COVERS, uid(), file)
   return storage.getFileView(B.COVERS, uploaded.$id)
 }
