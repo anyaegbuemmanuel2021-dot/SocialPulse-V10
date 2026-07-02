@@ -190,7 +190,7 @@ import {
   loginWithApple,
   loginWithGithub,
   loginWithFacebook
-} from '@/services/oauth'
+} from '@/services/auth'
 
 const auth = useAuthStore()
 const router = useRouter()

@@ -189,6 +189,11 @@ export async function uploadCover (file) {
   return storage.getFileView(B.COVERS, uploaded.$id)
 }
 
+export async function uploadAvatar (file) {
+  const uploaded = await storage.createFile(B.AVATARS, uid(), file)
+  return storage.getFileView(B.AVATARS, uploaded.$id)
+}
+
 // ── Report ────────────────────────────────────────────────────────────────────
 export async function reportVideo (videoId, reporterId, reason) {
   return databases.createDocument(DB, C.REPORTS, uid(), {

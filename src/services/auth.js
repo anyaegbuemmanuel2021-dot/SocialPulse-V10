@@ -67,17 +67,14 @@ export function currentProfile () { return _profile }
 export function isLoggedIn     () { return !!_user  }
 export function setProfile (p)  { _profile = p }
 
-// social login functions 
-
-//import { account } from '@/config/appwrite'
-import { OAuthProvider } from 'appwrite'
+// social login functions
 
 const success = window.location.origin + '/'
 const failure = window.location.origin + '/login'
 
 export function loginWithGoogle() {
     return account.createOAuth2Session(
-        OAuthProvider.Google,
+        'google',
         success,
         failure
     )
@@ -85,7 +82,7 @@ export function loginWithGoogle() {
 
 export function loginWithApple() {
     return account.createOAuth2Session(
-        OAuthProvider.Apple,
+        'apple',
         success,
         failure
     )
@@ -93,7 +90,7 @@ export function loginWithApple() {
 
 export function loginWithGithub() {
     return account.createOAuth2Session(
-        OAuthProvider.Github,
+        'github',
         success,
         failure
     )
@@ -101,7 +98,7 @@ export function loginWithGithub() {
 
 export function loginWithFacebook() {
     return account.createOAuth2Session(
-        OAuthProvider.Facebook,
+        'facebook',
         success,
         failure
     )
