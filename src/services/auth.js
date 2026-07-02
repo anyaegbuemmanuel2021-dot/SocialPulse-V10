@@ -35,13 +35,22 @@ export async function register (email, password, displayName) {
   return { user: _user, profile: _profile }
 }
 
-export async function login (email, password) {
-  await account.createEmailPasswordSession(email, password)
-  _user    = await account.get()
-  _profile = await databases.getDocument(DB, C.USERS, _user.$id)
-  await databases.updateDocument(DB, C.USERS, _user.$id, { last_login: now() })
-  localStorage.setItem('sp_token', 'active')
-  return { user: _user, profile: _profile }
+export async function login(email, password) {
+  console.log("account =", account);
+  console.log("typeof createEmailPasswordSession =", typeof account.createEmailPasswordSession);
+  console.log("createEmailPasswordSession =", account.createEmailPasswordSession);
+
+  await account.createEmailPasswordSession(email, password);
+
+  _user = await account.get();
+  _profile = await databases.getDocument(DB, C.USERS, _user.$id);
+
+  await databases.updateDocument(DB, C.USERS, _user.$id, {
+    last_login: now(),
+  });
+
+  localStorage.setItem("sp_token", "active");
+  return { user: _user, profile: _profile };
 }
 
 export async function logout () {
