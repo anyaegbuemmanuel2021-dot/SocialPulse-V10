@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * SocialPulse Deployment Manager v3.0
+ * SocialPulse Deployment Manager v3.1
  * ═══════════════════════════════════════════════════════════════════════════
  *
  * Idempotent, self-healing Appwrite provisioning tool. Safe to run as many
@@ -9,8 +9,9 @@
  * missing, waits for Appwrite to actually finish building resources instead
  * of guessing with sleep(), degrades gracefully on plan quota limits instead
  * of crashing the whole run, warns you when your schema file has drifted
- * from what's actually deployed, and can best-effort roll back everything
- * it created if the run ends in a hard failure.
+ * from what's actually deployed, flags collections that will silently reject
+ * client writes due to missing permissions, and can best-effort roll back
+ * everything it created if the run ends in a hard failure.
  *
  * USAGE
  *   node appwrite/setup/deployment-manager.js [flags]
@@ -327,8 +328,8 @@ async function createAttribute({ databases }, dbId, colId, attr) {
 
 /**
  * Polls an attribute (or index) until it reaches "available", "failed", or times out.
- * FIX #2: transient server errors (429/500/502/503, or no status at all — usually a
- * network blip) during polling no longer abort the wait; they're treated the same as
+ * Transient server errors (429/500/502/503, or no status at all — usually a
+ * network blip) during polling don't abort the wait; they're treated the same as
  * "not ready yet" and retried, since Appwrite can throw these briefly while a resource
  * is still being provisioned in the background.
  */
@@ -359,7 +360,7 @@ async function waitForStatus(getFn, { timeoutMs = 30000, intervalMs = 1000, labe
 }
 
 /**
- * FIX #5: schema drift detection. Compares a deployed attribute against the
+ * Schema drift detection. Compares a deployed attribute against the
  * definition in collections.js and flags mismatches. Appwrite generally can't
  * alter an attribute's type/size in place, so this never auto-fixes — it just
  * makes divergence visible instead of silently skipping forever because the
@@ -383,6 +384,35 @@ function detectAttributeDrift(current, def) {
   return mismatches
 }
 
+/**
+ * FIX (v3.1): permission validation. If a collection has no collection-level
+ * permission that grants "create" (or the legacy blanket "write") and
+ * documentSecurity is off, Appwrite will accept the collection but reject
+ * every client-side createDocument call with:
+ *   "No permissions provided for action 'create'"
+ * This is easy to miss because collection creation itself succeeds — the
+ * error only shows up later, at the client, on the exact endpoint your
+ * schema silently under-specified. We check this for every collection
+ * (newly created or pre-existing) instead of only warning about attributes
+ * and indexes.
+ */
+function checkCollectionPermissions(colId, permissions, documentSecurity, colReport) {
+  const perms = permissions || []
+  const hasCreateGrant = perms.some(
+    (p) => typeof p === 'string' && (p.startsWith('create(') || p.startsWith('write('))
+  )
+  if (!documentSecurity && !hasCreateGrant) {
+    warn(
+      `"${colId}" has no collection-level create permission and documentSecurity is off — ` +
+      `client writes will fail with "No permissions provided for action 'create'". ` +
+      `Add a Permission.create(...) to schema.permissions or set documentSecurity: true.`
+    )
+    colReport.permissionsWarning = true
+    return false
+  }
+  return true
+}
+
 async function ensureAttributes({ databases }, dbId, colId, schemaAttrs, colReport) {
   const existing = await databases.listAttributes(dbId, colId)
   const existingByKey = Object.fromEntries(existing.attributes.map((a) => [a.key, a]))
@@ -403,7 +433,7 @@ async function ensureAttributes({ databases }, dbId, colId, schemaAttrs, colRepo
       skip(`attr exists: ${attr.key}`)
       colReport.attributesSkipped.push(attr.key)
 
-      // FIX #5: flag drift on attributes we're not touching.
+      // Flag drift on attributes we're not touching.
       const mismatches = detectAttributeDrift(current, attr)
       if (mismatches.length) {
         warn(`attr "${attr.key}" has drifted from schema — ${mismatches.join(', ')}`)
@@ -454,13 +484,9 @@ async function ensureAttributes({ databases }, dbId, colId, schemaAttrs, colRepo
 }
 
 /**
- * FIX #1: failed-index handling no longer falls through into the create path
- * unless --repair is set. Previously, a failed index with --repair off would
- * skip the "already exists" branch (since that only matched non-failed
- * indexes) and drop straight into createIndex(), which Appwrite rejects with
- * a 409 that got mislabeled as "index exists" — masking the real failed state.
- * Now there are three explicit branches: failed+repair (recreate), failed+!repair
- * (warn and leave it alone), and healthy (skip).
+ * Failed-index handling doesn't fall through into the create path
+ * unless --repair is set. There are three explicit branches: failed+repair
+ * (recreate), failed+!repair (warn and leave it alone), and healthy (skip).
  */
 async function ensureIndexes({ databases }, dbId, colId, schemaIndexes, colReport) {
   if (!schemaIndexes?.length) return
@@ -533,13 +559,15 @@ async function ensureCollection(clients, dbId, colId, schema, index, total) {
     attributesCreated: [], attributesSkipped: [], attributesPlanned: [], attributesFailed: [],
     attributesDrifted: [],
     indexesCreated: [], indexesSkipped: [], indexesPlanned: [], indexesFailed: [],
+    permissionsWarning: false,
   }
 
   log(`\n${c('cyan', `[${index}/${total}]`)} ${c('bold', colId)}`)
 
   let exists = true
+  let existingCollection = null
   try {
-    await databases.getCollection(dbId, colId)
+    existingCollection = await databases.getCollection(dbId, colId)
   } catch (err) {
     if (!isNotFound(err)) throw err
     exists = false
@@ -549,6 +577,8 @@ async function ensureCollection(clients, dbId, colId, schema, index, total) {
     if (FLAGS.dryRun) {
       warn('[dry-run] would create collection')
       colReport.status = 'would-create'
+      // Check against the schema's intended config, since nothing is deployed yet.
+      checkCollectionPermissions(colId, schema.permissions, schema.documentSecurity ?? false, colReport)
     } else {
       const name = colId.replace(/_/g, ' ').replace(/\b\w/g, (ch) => ch.toUpperCase())
       await withRetry(
@@ -559,10 +589,14 @@ async function ensureCollection(clients, dbId, colId, schema, index, total) {
       colReport.status = 'created'
       trackCreation('collection', () => databases.deleteCollection(dbId, colId), `collection ${colId}`)
       await sleep(300) // brief settle time before attribute creation is accepted
+      checkCollectionPermissions(colId, schema.permissions, schema.documentSecurity ?? false, colReport)
     }
   } else {
     ok('collection already exists')
     colReport.status = 'existing'
+    // Check the permissions actually deployed on Appwrite, not just what the
+    // local schema says — these can drift from each other too.
+    checkCollectionPermissions(colId, existingCollection.$permissions, existingCollection.documentSecurity, colReport)
   }
 
   if (!exists && FLAGS.dryRun) {
@@ -583,7 +617,7 @@ async function ensureCollection(clients, dbId, colId, schema, index, total) {
 // ─────────────────────────────────────────────────────────────────────────
 
 /**
- * FIX #3: pre-flight visibility into bucket headroom. We never hardcode a
+ * Pre-flight visibility into bucket headroom. We never hardcode a
  * specific plan's bucket limit (those numbers change and Appwrite's server
  * API doesn't expose your billing tier reliably) — instead we report what we
  * can observe directly (current count) and, if the user has told us the cap
@@ -701,6 +735,7 @@ function printSummary({ dbReport, colReports, bucketReport, validationPassed, ro
   console.log('\nCollections')
   let attrsCreated = 0, attrsSkipped = 0, attrsFailed = 0, attrsDrifted = 0
   let idxCreated = 0, idxSkipped = 0, idxFailed = 0
+  const permissionWarnings = []
   for (const r of colReports) {
     attrsCreated += r.attributesCreated.length
     attrsSkipped += r.attributesSkipped.length
@@ -709,12 +744,16 @@ function printSummary({ dbReport, colReports, bucketReport, validationPassed, ro
     idxCreated += r.indexesCreated.length
     idxSkipped += r.indexesSkipped.length
     idxFailed += r.indexesFailed.length
+    if (r.permissionsWarning) permissionWarnings.push(r.id)
     const marker = r.attributesFailed.length || r.indexesFailed.length ? c('red', '✗')
-      : r.attributesDrifted.length ? c('yellow', '⚠')
+      : (r.attributesDrifted.length || r.permissionsWarning) ? c('yellow', '⚠')
       : c('green', '✓')
     console.log(`  ${marker} ${r.id}  ${c('gray', `(${r.status})`)}`)
     for (const d of r.attributesDrifted) {
       console.log(`      ${c('yellow', '⚠')} ${d.key}: ${d.mismatches.join('; ')}`)
+    }
+    if (r.permissionsWarning) {
+      console.log(`      ${c('yellow', '⚠')} no create permission / documentSecurity off — client writes will fail`)
     }
   }
 
@@ -737,6 +776,14 @@ function printSummary({ dbReport, colReports, bucketReport, validationPassed, ro
   }
   if (bucketReport.bucketsFailed.length) console.log(`  ${c('red', '✗')} ${bucketReport.bucketsFailed.length} failed`)
 
+  console.log('\nPermissions')
+  if (permissionWarnings.length) {
+    console.log(`  ${c('yellow', '⚠')} ${permissionWarnings.length} collection(s) missing a create grant: ${permissionWarnings.join(', ')}`)
+    console.log(`  ${c('gray', 'Add Permission.create(...) to schema.permissions, or set documentSecurity: true, for each.')}`)
+  } else {
+    console.log(`  ${c('green', '✓ All collections have a usable create permission')}`)
+  }
+
   console.log('\nValidation')
   console.log(validationPassed ? `  ${c('green', '✓ Passed')}` : `  ${c('red', '✗ Failed — see above')}`)
 
@@ -748,7 +795,7 @@ function printSummary({ dbReport, colReports, bucketReport, validationPassed, ro
   console.log(`\n${c('bold', '═'.repeat(50))}`)
   if (rolledBack) {
     console.log(c('red', c('bold', '  Deployment failed and was rolled back.')))
-  } else if (validationPassed && !attrsFailed && !idxFailed && !bucketReport.bucketsFailed.length) {
+  } else if (validationPassed && !attrsFailed && !idxFailed && !bucketReport.bucketsFailed.length && !permissionWarnings.length) {
     console.log(c('green', c('bold', '  Deployment completed successfully.')))
   } else {
     console.log(c('yellow', c('bold', '  Deployment completed with warnings — review the summary above.')))
@@ -761,7 +808,7 @@ function printSummary({ dbReport, colReports, bucketReport, validationPassed, ro
 // ─────────────────────────────────────────────────────────────────────────
 ;(async () => {
   console.log(c('bold', '═'.repeat(50)))
-  console.log(c('bold', '  SocialPulse Deployment Manager v3.0'))
+  console.log(c('bold', '  SocialPulse Deployment Manager v3.1'))
   console.log(c('bold', '═'.repeat(50)))
   if (FLAGS.dryRun) console.log(c('yellow', '  Mode: DRY RUN — no changes will be made'))
   if (FLAGS.repair) console.log(c('yellow', '  Mode: REPAIR — failed resources will be recreated'))

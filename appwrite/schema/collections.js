@@ -24,8 +24,11 @@ export const COL = {
 }
 
 // ── Bucket IDs ────────────────────────────────────────────────────────────────
+// Single unified bucket — all media (videos, avatars, covers, chat media,
+// thumbnails, PDFs) is stored here. Both keys point to the same bucket id
+// so existing calls like storage.createFile(BUCK.AVATARS, ...) still work.
 export const BUCK = {
-  MEDIA: 'media',
+  MEDIA:   'media',
   AVATARS: 'media',
 }
 
@@ -35,6 +38,8 @@ export const BUCK = {
 export const SCHEMAS = {
 
   [COL.USERS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'user_id',         type: 'string',   required: true,  size: 36   },
       { key: 'email',           type: 'string',   required: true,  size: 255  },
@@ -68,6 +73,8 @@ export const SCHEMAS = {
   },
 
   [COL.VIDEOS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'user_id',       type: 'string',   required: true,  size: 36   },
       { key: 'title',         type: 'string',   required: true,  size: 255  },
@@ -100,6 +107,8 @@ export const SCHEMAS = {
   },
 
   [COL.COMMENTS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'video_id',          type: 'string',   required: true,  size: 36   },
       { key: 'user_id',           type: 'string',   required: true,  size: 36   },
@@ -120,6 +129,8 @@ export const SCHEMAS = {
   },
 
   [COL.LIKES]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'user_id',    type: 'string',   required: true,  size: 36 },
       { key: 'video_id',   type: 'string',   required: false, size: 36 },
@@ -136,6 +147,8 @@ export const SCHEMAS = {
   },
 
   [COL.FOLLOWS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'follower_id',  type: 'string',   required: true, size: 36 },
       { key: 'following_id', type: 'string',   required: true, size: 36 },
@@ -148,6 +161,8 @@ export const SCHEMAS = {
   },
 
   [COL.SAVES]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'user_id',    type: 'string',   required: true, size: 36 },
       { key: 'video_id',   type: 'string',   required: true, size: 36 },
@@ -160,6 +175,8 @@ export const SCHEMAS = {
   },
 
   [COL.NOTIFICATIONS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'user_id',           type: 'string',   required: true,  size: 36  },
       { key: 'actor_id',          type: 'string',   required: true,  size: 36  },
@@ -178,6 +195,8 @@ export const SCHEMAS = {
   },
 
   [COL.CONVERSATIONS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'participant_ids',  type: 'string',   required: true,  size: 36, array: true },
       { key: 'last_message_id',  type: 'string',   required: false, size: 36  },
@@ -191,6 +210,8 @@ export const SCHEMAS = {
   },
 
   [COL.MESSAGES]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'conversation_id', type: 'string',   required: true,  size: 36   },
       { key: 'sender_id',       type: 'string',   required: true,  size: 36   },
@@ -210,6 +231,8 @@ export const SCHEMAS = {
   },
 
   [COL.VIDEO_VIEWS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'video_id',      type: 'string',   required: true,  size: 36 },
       { key: 'user_id',       type: 'string',   required: false, size: 36 },
@@ -224,6 +247,8 @@ export const SCHEMAS = {
   },
 
   [COL.HASHTAGS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'tag',         type: 'string',   required: true, size: 100 },
       { key: 'usage_count', type: 'integer',  required: false },
@@ -237,6 +262,8 @@ export const SCHEMAS = {
   },
 
   [COL.REPORTS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'reporter_id',        type: 'string',   required: true,  size: 36   },
       { key: 'reported_user_id',   type: 'string',   required: false, size: 36   },
@@ -257,6 +284,8 @@ export const SCHEMAS = {
   },
 
   [COL.BLOCKED_USERS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'blocker_id',  type: 'string',   required: true, size: 36 },
       { key: 'blocked_id',  type: 'string',   required: true, size: 36 },
@@ -269,6 +298,8 @@ export const SCHEMAS = {
   },
 
   [COL.ADMIN_LOGS]: {
+    documentSecurity: true,
+    permissions: [],
     attributes: [
       { key: 'admin_id',      type: 'string',   required: true,  size: 36   },
       { key: 'action',        type: 'string',   required: true,  size: 100  },
@@ -286,12 +317,14 @@ export const SCHEMAS = {
 }
 
 // ── Storage Bucket Definitions ─────────────────────────────────────────────────
+// Only ONE bucket — it must accept everything: videos, avatars, covers,
+// chat media, thumbnails, PDFs.
 
 export const BUCKET_DEFS = [
   {
     id: BUCK.MEDIA,
     name: 'Media',
-    maxSize: 50000000, // 50 MB
+    maxSize: 50000000, // 50 MB — covers videos, avatars, covers, chat media, thumbnails
     types: [
       'video/mp4',
       'video/webm',
@@ -302,17 +335,6 @@ export const BUCKET_DEFS = [
       'image/webp',
       'image/gif',
       'application/pdf'
-    ]
-  },
-  {
-    id: BUCK.AVATARS,
-    name: 'Avatars',
-    maxSize: 10000000, // 10 MB
-    types: [
-      'image/jpeg',
-      'image/png',
-      'image/webp',
-      'image/gif'
     ]
   }
 ]
