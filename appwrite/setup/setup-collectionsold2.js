@@ -63,7 +63,7 @@
 import { readFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import { Client, Databases, Storage, ID, Permission, Role } from 'node-appwrite'
+import { Client, Databases, Storage, ID } from 'node-appwrite'
 
 const __dir = dirname(fileURLToPath(import.meta.url))
 
@@ -93,7 +93,6 @@ const c = (col, s) => `${color[col]}${s}${color.reset}`
 function log(msg) { console.log(msg) }
 function ok(msg) { console.log(`   ${c('green', '✓')} ${msg}`) }
 function created(msg) { console.log(`   ${c('green', '✅')} ${msg}`) }
-function fixed(msg) { console.log(`   ${c('cyan', '🔧')} ${msg}`) }
 function warn(msg) { console.log(`   ${c('yellow', '⚠')}  ${msg}`) }
 function fail(msg) { console.log(`   ${c('red', '✗')} ${msg}`) }
 function skip(msg) { console.log(`   ${c('gray', '·')} ${msg}`) }
@@ -388,28 +387,25 @@ function detectAttributeDrift(current, def) {
 /**
  * FIX (v3.1): permission validation. If a collection has no collection-level
  * permission that grants "create" (or the legacy blanket "write") and
- * without a collection-level create grant, Appwrite will accept the
- * collection but reject every client-side createDocument call with:
- *   "The current user is not authorized to perform the requested action."
- * documentSecurity ONLY affects read/update/delete permissions on documents
- * that already exist — it never grants create, because there is no document
- * yet for a document-level permission to attach to. Create is *always*
- * governed purely by the collection-level permissions array. This is easy
- * to miss because collection creation itself succeeds — the error only
- * shows up later, at the client, on the exact endpoint your schema silently
- * under-specified. We check this for every collection (newly created or
- * pre-existing) instead of only warning about attributes and indexes.
+ * documentSecurity is off, Appwrite will accept the collection but reject
+ * every client-side createDocument call with:
+ *   "No permissions provided for action 'create'"
+ * This is easy to miss because collection creation itself succeeds — the
+ * error only shows up later, at the client, on the exact endpoint your
+ * schema silently under-specified. We check this for every collection
+ * (newly created or pre-existing) instead of only warning about attributes
+ * and indexes.
  */
 function checkCollectionPermissions(colId, permissions, documentSecurity, colReport) {
   const perms = permissions || []
   const hasCreateGrant = perms.some(
     (p) => typeof p === 'string' && (p.startsWith('create(') || p.startsWith('write('))
   )
-  if (!hasCreateGrant) {
+  if (!documentSecurity && !hasCreateGrant) {
     warn(
-      `"${colId}" has no collection-level create permission — client writes will fail with ` +
-      `"not authorized to perform the requested action", regardless of documentSecurity. ` +
-      `Add a Permission.create(...) to schema.permissions.`
+      `"${colId}" has no collection-level create permission and documentSecurity is off — ` +
+      `client writes will fail with "No permissions provided for action 'create'". ` +
+      `Add a Permission.create(...) to schema.permissions or set documentSecurity: true.`
     )
     colReport.permissionsWarning = true
     return false
@@ -600,28 +596,7 @@ async function ensureCollection(clients, dbId, colId, schema, index, total) {
     colReport.status = 'existing'
     // Check the permissions actually deployed on Appwrite, not just what the
     // local schema says — these can drift from each other too.
-    const permsOk = checkCollectionPermissions(colId, existingCollection.$permissions, existingCollection.documentSecurity, colReport)
-
-    if (!permsOk && (schema.permissions || []).length > 0) {
-      // The collection exists but was provisioned before this schema had a
-      // create grant (or someone edited it by hand in the console). Bring
-      // it in line with the schema instead of just warning forever.
-      if (FLAGS.dryRun) {
-        warn(`[dry-run] would update permissions on "${colId}" to match schema`)
-      } else {
-        await withRetry(
-          () => databases.updateCollection(
-            dbId, colId, existingCollection.name,
-            schema.permissions, schema.documentSecurity ?? existingCollection.documentSecurity,
-            existingCollection.enabled
-          ),
-          { label: `permissions repair ${colId}` }
-        )
-        fixed(`permissions repaired to match schema`)
-        colReport.permissionsWarning = false
-        colReport.permissionsRepaired = true
-      }
-    }
+    checkCollectionPermissions(colId, existingCollection.$permissions, existingCollection.documentSecurity, colReport)
   }
 
   if (!exists && FLAGS.dryRun) {

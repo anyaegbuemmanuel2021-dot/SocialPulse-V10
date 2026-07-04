@@ -35,35 +35,22 @@ export async function register (email, password, displayName) {
   return { user: _user, profile: _profile }
 }
 
-export async function login (email, password) {
-  await account.createEmailPasswordSession(email, password)
-  _user = await account.get()
+export async function login(email, password) {
+  console.log("account =", account);
+  console.log("typeof createEmailPasswordSession =", typeof account.createEmailPasswordSession);
+  console.log("createEmailPasswordSession =", account.createEmailPasswordSession);
 
-  try {
-    _profile = await databases.getDocument(DB, C.USERS, _user.$id)
-  } catch (err) {
-    // Session exists but the profile document is missing (e.g. it was
-    // deleted, or registration's createDocument step failed previously
-    // due to permissions). Repair it instead of treating the user as
-    // logged out — otherwise they're stuck with a working auth session
-    // and no way back in through the normal login flow.
-    if (err?.code !== 404) throw err
-    const username = makeUsername(_user.name || email.split('@')[0])
-    _profile = await databases.createDocument(DB, C.USERS, _user.$id, {
-      user_id: _user.$id, email, display_name: _user.name || email.split('@')[0], username,
-      bio: '', avatar_url: '', cover_url: '', website: '',
-      verified: false, is_private: false,
-      follower_count: 0, following_count: 0, video_count: 0, like_count: 0,
-      created_at: now(), updated_at: now(), last_login: now(),
-    })
-  }
+  await account.createEmailPasswordSession(email, password);
+
+  _user = await account.get();
+  _profile = await databases.getDocument(DB, C.USERS, _user.$id);
 
   await databases.updateDocument(DB, C.USERS, _user.$id, {
     last_login: now(),
-  })
+  });
 
-  localStorage.setItem('sp_token', 'active')
-  return { user: _user, profile: _profile }
+  localStorage.setItem("sp_token", "active");
+  return { user: _user, profile: _profile };
 }
 
 export async function logout () {

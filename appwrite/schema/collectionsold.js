@@ -3,8 +3,6 @@
  * Used by the setup script to create all collections automatically.
  */
 
-import { Permission, Role } from 'node-appwrite'
-
 export const DB_ID = process.env.APPWRITE_DATABASE_ID || 'socialpulse_db'
 
 // ── Collection IDs ────────────────────────────────────────────────────────────
@@ -41,7 +39,7 @@ export const SCHEMAS = {
 
   [COL.USERS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'user_id',         type: 'string',   required: true,  size: 36   },
       { key: 'email',           type: 'string',   required: true,  size: 255  },
@@ -76,7 +74,7 @@ export const SCHEMAS = {
 
   [COL.VIDEOS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'user_id',       type: 'string',   required: true,  size: 36   },
       { key: 'title',         type: 'string',   required: true,  size: 255  },
@@ -110,7 +108,7 @@ export const SCHEMAS = {
 
   [COL.COMMENTS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'video_id',          type: 'string',   required: true,  size: 36   },
       { key: 'user_id',           type: 'string',   required: true,  size: 36   },
@@ -132,7 +130,7 @@ export const SCHEMAS = {
 
   [COL.LIKES]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'user_id',    type: 'string',   required: true,  size: 36 },
       { key: 'video_id',   type: 'string',   required: false, size: 36 },
@@ -150,7 +148,7 @@ export const SCHEMAS = {
 
   [COL.FOLLOWS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'follower_id',  type: 'string',   required: true, size: 36 },
       { key: 'following_id', type: 'string',   required: true, size: 36 },
@@ -164,7 +162,7 @@ export const SCHEMAS = {
 
   [COL.SAVES]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'user_id',    type: 'string',   required: true, size: 36 },
       { key: 'video_id',   type: 'string',   required: true, size: 36 },
@@ -178,7 +176,7 @@ export const SCHEMAS = {
 
   [COL.NOTIFICATIONS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'user_id',           type: 'string',   required: true,  size: 36  },
       { key: 'actor_id',          type: 'string',   required: true,  size: 36  },
@@ -198,7 +196,7 @@ export const SCHEMAS = {
 
   [COL.CONVERSATIONS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'participant_ids',  type: 'string',   required: true,  size: 36, array: true },
       { key: 'last_message_id',  type: 'string',   required: false, size: 36  },
@@ -213,7 +211,7 @@ export const SCHEMAS = {
 
   [COL.MESSAGES]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'conversation_id', type: 'string',   required: true,  size: 36   },
       { key: 'sender_id',       type: 'string',   required: true,  size: 36   },
@@ -234,7 +232,7 @@ export const SCHEMAS = {
 
   [COL.VIDEO_VIEWS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'video_id',      type: 'string',   required: true,  size: 36 },
       { key: 'user_id',       type: 'string',   required: false, size: 36 },
@@ -250,7 +248,7 @@ export const SCHEMAS = {
 
   [COL.HASHTAGS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'tag',         type: 'string',   required: true, size: 100 },
       { key: 'usage_count', type: 'integer',  required: false },
@@ -265,7 +263,7 @@ export const SCHEMAS = {
 
   [COL.REPORTS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'reporter_id',        type: 'string',   required: true,  size: 36   },
       { key: 'reported_user_id',   type: 'string',   required: false, size: 36   },
@@ -287,7 +285,7 @@ export const SCHEMAS = {
 
   [COL.BLOCKED_USERS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'blocker_id',  type: 'string',   required: true, size: 36 },
       { key: 'blocked_id',  type: 'string',   required: true, size: 36 },
@@ -300,10 +298,8 @@ export const SCHEMAS = {
   },
 
   [COL.ADMIN_LOGS]: {
-    // TODO: once an admin team/label exists, replace Role.users() with
-    // Permission.create(Role.team('admins')) so only admins can write logs.
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [],
     attributes: [
       { key: 'admin_id',      type: 'string',   required: true,  size: 36   },
       { key: 'action',        type: 'string',   required: true,  size: 100  },
