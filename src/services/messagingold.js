@@ -1,6 +1,5 @@
-import { databases, client, DB, C, B, uid, now } from '@/config/appwrite'
+import { databases, storage, client, DB, C, B, uid, now } from '@/config/appwrite'
 import { Query } from 'appwrite'
-import { uploadMedia, deleteMedia, deleteLegacyStorageFile } from '@/services/media'
 
 export async function getOrCreateConversation (userId1, userId2) {
   // Fetch all conversations of userId1 and find one that contains userId2
@@ -29,17 +28,16 @@ export async function getUserConversations (userId, limit = 30) {
   return r.documents
 }
 
-export async function sendMessage (conversationId, senderId, content, mediaUrl = null, mediaType = null, mediaPublicId = null) {
+export async function sendMessage (conversationId, senderId, content, mediaUrl = null, mediaType = null) {
   const msg = await databases.createDocument(DB, C.MESSAGES, uid(), {
-    conversation_id:  conversationId,
-    sender_id:        senderId,
+    conversation_id: conversationId,
+    sender_id:       senderId,
     content,
-    media_url:        mediaUrl,
-    media_type:       mediaType,
-    media_public_id:  mediaPublicId,
-    is_read:          false,
-    read_at:          null,
-    created_at:       now(),
+    media_url:       mediaUrl,
+    media_type:      mediaType,
+    is_read:         false,
+    read_at:         null,
+    created_at:      now(),
   })
   // Update conversation meta
   await databases.updateDocument(DB, C.CONVERSATIONS, conversationId, {
@@ -73,14 +71,12 @@ export async function markConversationRead (conversationId, readerId) {
 }
 
 export async function deleteMessage (messageId) {
-  const m = await databases.getDocument(DB, C.MESSAGES, messageId)
-  if (m.media_public_id) await deleteMedia(m.media_public_id, m.media_type === 'video' ? 'video' : 'image')
-  else await deleteLegacyStorageFile(B.MESSAGES, m.media_url)
   await databases.deleteDocument(DB, C.MESSAGES, messageId)
 }
 
 export async function uploadMessageMedia (file) {
-  return uploadMedia(file, 'image', 'socialpulse/messages')
+  const f = await storage.createFile(B.MESSAGES, uid(), file)
+  return storage.getFileView(B.MESSAGES, f.$id)
 }
 
 export async function getUnreadMessageCount (userId) {

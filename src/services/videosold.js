@@ -1,18 +1,15 @@
-import { databases, DB, C, B, uid, now } from '@/config/appwrite'
+import { databases, storage, DB, C, B, uid, now } from '@/config/appwrite'
 import { Query, ID } from 'appwrite'
-import { uploadMedia, deleteMedia, deleteLegacyStorageFile } from '@/services/media'
 
 // ── CRUD ──────────────────────────────────────────────────────────────────────
 export async function createVideo (userId, data) {
   const doc = await databases.createDocument(DB, C.VIDEOS, uid(), {
-    user_id:             userId,
-    title:               data.title               || 'Untitled',
-    description:         data.description          || '',
-    video_url:           data.video_url            || '',
-    video_public_id:     data.video_public_id      || '',
-    thumbnail_url:       data.thumbnail_url        || '',
-    thumbnail_public_id: data.thumbnail_public_id  || '',
-    duration:            data.duration             || 0,
+    user_id:       userId,
+    title:         data.title         || 'Untitled',
+    description:   data.description   || '',
+    video_url:     data.video_url     || '',
+    thumbnail_url: data.thumbnail_url || '',
+    duration:      data.duration      || 0,
     hashtags:      data.hashtags      || [],
     mentions:      data.mentions      || [],
     visibility:    data.visibility    || 'public',
@@ -46,15 +43,9 @@ export async function updateVideo (videoId, data) {
 export async function deleteVideo (videoId) {
   const v = await databases.getDocument(DB, C.VIDEOS, videoId)
 
-  // Delete the underlying media before removing the document, so a
-  // dangling document never outlives the media it points to. Records
-  // created before the Cloudinary migration have a url but no public_id —
-  // fall back to the old Appwrite Storage delete for those.
-  if (v.video_public_id) await deleteMedia(v.video_public_id, 'video')
-  else await deleteLegacyStorageFile(B.VIDEOS, v.video_url)
-
-  if (v.thumbnail_public_id) await deleteMedia(v.thumbnail_public_id, 'image')
-  else await deleteLegacyStorageFile(B.THUMBNAILS, v.thumbnail_url)
+  // Delete storage files
+  await _tryDeleteFile(B.VIDEOS,     v.video_url)
+  await _tryDeleteFile(B.THUMBNAILS, v.thumbnail_url)
 
   await databases.deleteDocument(DB, C.VIDEOS, videoId)
   _incr(v.user_id, 'video_count', -1)
@@ -176,6 +167,34 @@ export async function shareVideo (videoId) {
 }
 
 // ── Upload ────────────────────────────────────────────────────────────────────
+/*export async function uploadVideoFile (file, onProgress) {
+  const uploaded = await storage.createFile(B.VIDEOS, uid(), file,
+    undefined, (evt) => { if (onProgress) onProgress(Math.round(evt.loaded / evt.total * 100)) }
+  )
+  return storage.getFileView(B.VIDEOS, uploaded.$id)
+}
+
+export async function uploadThumbnail (file) {
+  const uploaded = await storage.createFile(B.THUMBNAILS, uid(), file)
+  return storage.getFileView(B.THUMBNAILS, uploaded.$id)
+}
+
+export async function uploadMessageMedia(file) {
+  const f = await storage.createFile(B.MESSAGES, uid(), file);
+  return storage.getFileView(B.MESSAGES, f.$id);
+}
+
+export async function uploadAvatar(file) {
+  const uploaded = await storage.createFile(B.AVATARS, uid(), file)
+  return storage.getFileView(B.AVATARS, uploaded.$id)
+}
+
+export async function uploadCover(file) {
+  const uploaded = await storage.createFile(B.COVERS, uid(), file)
+  return storage.getFileView(B.COVERS, uploaded.$id)
+}
+*/
+
 // All five return { url, publicId, duration, width, height, bytes, format }
 // (see src/config/cloudinary.js). Store both url and publicId on the
 // document — the URL for display, the publicId so the asset can be
@@ -220,6 +239,14 @@ async function _incr (docId, field, delta, collection = C.USERS) {
       [field]: Math.max(0, (d[field] || 0) + delta),
     })
   } catch { /* non-critical */ }
+}
+
+async function _tryDeleteFile (bucket, url) {
+  if (!url) return
+  try {
+    const fileId = url.split('/').slice(-2, -1)[0]
+    await storage.deleteFile(bucket, fileId)
+  } catch { /* file may not exist */ }
 }
 
 async function _upsertHashtag (tag) {

@@ -118,19 +118,16 @@ onUnmounted(() => { if (unsubscribe) unsubscribe() })
 async function send () {
   if (!text.value.trim() && !mediaFile.value) return
 
-  let mediaUrl      = null
-  let mediaType     = null
-  let mediaPublicId = null
+  let mediaUrl  = null
+  let mediaType = null
 
   if (mediaFile.value) {
-    const r       = await uploadMessageMedia(mediaFile.value)
-    mediaUrl      = r.url
-    mediaPublicId = r.publicId
-    mediaType     = 'image'
+    mediaUrl  = await uploadMessageMedia(mediaFile.value)
+    mediaType = 'image'
     mediaFile.value = null
   }
 
-  const msg = await sendMessage(convId, auth.userId, text.value.trim() || '📷', mediaUrl, mediaType, mediaPublicId)
+  const msg = await sendMessage(convId, auth.userId, text.value.trim() || '📷', mediaUrl, mediaType)
   text.value = ''
   // Optimistic update (realtime will also fire, deduplicate by $id)
   if (!messages.value.find(m => m.$id === msg.$id)) {

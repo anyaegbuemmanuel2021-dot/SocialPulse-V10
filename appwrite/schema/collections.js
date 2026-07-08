@@ -25,10 +25,12 @@ export const COL = {
   ADMIN_LOGS:     'admin_logs',
 }
 
-// ── Bucket IDs ────────────────────────────────────────────────────────────────
-// Single unified bucket — all media (videos, avatars, covers, chat media,
-// thumbnails, PDFs) is stored here. Both keys point to the same bucket id
-// so existing calls like storage.createFile(BUCK.AVATARS, ...) still work.
+// ── Bucket IDs (legacy) ─────────────────────────────────────────────────────
+// Media now lives on Cloudinary (see src/config/cloudinary.js) — the app no
+// longer uploads to Appwrite Storage. This bucket is created for backward
+// compatibility only; it's safe to delete BUCKET_DEFS below (and skip
+// ensureBuckets in the setup script) once you've confirmed nothing in the
+// app still references it.
 export const BUCK = {
   MEDIA:   'media',
   AVATARS: 'media',
@@ -48,8 +50,10 @@ export const SCHEMAS = {
       { key: 'username',        type: 'string',   required: true,  size: 50   },
       { key: 'display_name',    type: 'string',   required: true,  size: 100  },
       { key: 'bio',             type: 'string',   required: false, size: 500  },
-      { key: 'avatar_url',      type: 'string',   required: false, size: 1024 },
-      { key: 'cover_url',       type: 'string',   required: false, size: 1024 },
+      { key: 'avatar_url',        type: 'string',   required: false, size: 1024 },
+      { key: 'avatar_public_id',  type: 'string',   required: false, size: 255  },
+      { key: 'cover_url',         type: 'string',   required: false, size: 1024 },
+      { key: 'cover_public_id',   type: 'string',   required: false, size: 255  },
       { key: 'website',         type: 'string',   required: false, size: 500  },
       { key: 'verified',        type: 'boolean',  required: false },
       { key: 'is_private',      type: 'boolean',  required: false },
@@ -81,8 +85,10 @@ export const SCHEMAS = {
       { key: 'user_id',       type: 'string',   required: true,  size: 36   },
       { key: 'title',         type: 'string',   required: true,  size: 255  },
       { key: 'description',   type: 'string',   required: false, size: 2000 },
-      { key: 'video_url',     type: 'string',   required: true,  size: 2048 },
-      { key: 'thumbnail_url', type: 'string',   required: false, size: 2048 },
+      { key: 'video_url',            type: 'string',   required: true,  size: 2048 },
+      { key: 'video_public_id',      type: 'string',   required: false, size: 255  },
+      { key: 'thumbnail_url',        type: 'string',   required: false, size: 2048 },
+      { key: 'thumbnail_public_id',  type: 'string',   required: false, size: 255  },
       { key: 'duration',      type: 'double',   required: false },
       { key: 'hashtags',      type: 'string',   required: false, size: 50,   array: true },
       { key: 'mentions',      type: 'string',   required: false, size: 50,   array: true },
@@ -219,6 +225,7 @@ export const SCHEMAS = {
       { key: 'sender_id',       type: 'string',   required: true,  size: 36   },
       { key: 'content',         type: 'string',   required: true,  size: 4000 },
       { key: 'media_url',       type: 'string',   required: false, size: 2048 },
+      { key: 'media_public_id', type: 'string',   required: false, size: 255  },
       { key: 'media_type',      type: 'string',   required: false, size: 20   },
       { key: 'is_read',         type: 'boolean',  required: false },
       { key: 'read_at',         type: 'datetime', required: false },

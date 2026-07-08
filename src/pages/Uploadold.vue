@@ -136,27 +136,24 @@ async function submit () {
   progress.value  = 0
 
   try {
-    // 1. Upload video to Cloudinary
-    const videoResult = await uploadVideoFile(videoFile.value, (p) => { progress.value = Math.floor(p * 0.8) })
+    // 1. Upload video
+    const videoUrl = await uploadVideoFile(videoFile.value, (p) => { progress.value = Math.floor(p * 0.8) })
 
     // 2. Upload thumbnail (optional)
-    let thumbnailResult = null
+    let thumbnailUrl = ''
     if (thumbFile.value) {
       progress.value = 85
-      thumbnailResult = await uploadThumbnail(thumbFile.value)
+      thumbnailUrl = await uploadThumbnail(thumbFile.value)
     }
 
     progress.value = 95
 
-    // 3. Create video document (Appwrite stores only metadata + Cloudinary URLs)
+    // 3. Create video document
     const video = await createVideo(auth.userId, {
       ...form.value,
-      video_url:           videoResult.url,
-      video_public_id:     videoResult.publicId,
-      thumbnail_url:       thumbnailResult?.url      || '',
-      thumbnail_public_id: thumbnailResult?.publicId || '',
-      duration:            videoResult.duration,
-      hashtags:            parseHashtags(),
+      video_url:     videoUrl,
+      thumbnail_url: thumbnailUrl,
+      hashtags:      parseHashtags(),
     })
 
     progress.value = 100

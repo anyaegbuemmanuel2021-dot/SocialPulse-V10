@@ -190,8 +190,6 @@ import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { updateProfile, getBlockedUsers, unblockUser } from '@/services/users'
 import { uploadAvatar, uploadCover } from '@/services/videos'
-import { deleteMedia, deleteLegacyStorageFile } from '@/services/media'
-import { B } from '@/config/appwrite'
 import { updatePassword } from '@/services/auth'
 
 const router = useRouter()
@@ -259,30 +257,9 @@ async function saveProfile () {
   saving.value = true; saveError.value = ''; saveSuccess.value = false
   try {
     const updates = { ...form }
-    if (newAvatarFile) {
-      const r = await uploadAvatar(newAvatarFile)
-      updates.avatar_url       = r.url
-      updates.avatar_public_id = r.publicId
-    }
-    if (newCoverFile) {
-      const r = await uploadCover(newCoverFile)
-      updates.cover_url       = r.url
-      updates.cover_public_id = r.publicId
-    }
+    if (newAvatarFile) updates.avatar_url = await uploadAvatar(newAvatarFile)
+    if (newCoverFile)  updates.cover_url  = await uploadCover(newCoverFile)
     const updated = await updateProfile(auth.userId, updates)
-
-    // Clean up the assets being replaced (best-effort, after the new ones
-    // are safely stored so a failed save never leaves the user without an
-    // avatar/cover). Records from before the Cloudinary migration have a
-    // url but no public_id — fall back to the old Appwrite Storage delete.
-    if (newAvatarFile) {
-      if (profile.value?.avatar_public_id) deleteMedia(profile.value.avatar_public_id, 'image')
-      else if (profile.value?.avatar_url)  deleteLegacyStorageFile(B.AVATARS, profile.value.avatar_url)
-    }
-    if (newCoverFile) {
-      if (profile.value?.cover_public_id) deleteMedia(profile.value.cover_public_id, 'image')
-      else if (profile.value?.cover_url)  deleteLegacyStorageFile(B.COVERS, profile.value.cover_url)
-    }
     auth.updateProfile(updated)
     profile.value    = updated
     saveSuccess.value = true

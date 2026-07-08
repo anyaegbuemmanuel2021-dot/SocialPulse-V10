@@ -849,7 +849,7 @@ function printSummary({ dbReport, colReports, bucketReport, validationPassed, ro
 
   let SCHEMAS, BUCKET_DEFS
   try {
-    ;({ SCHEMAS, BUCKET_DEFS } = await import('../schema/collectionsold.js'))
+    ;({ SCHEMAS, BUCKET_DEFS } = await import('../schema/collections.js'))
   } catch (err) {
     console.error(`\n${c('red', '❌ Could not load ../schema/collections.js')}`)
     console.error(`   ${err.message}\n`)
