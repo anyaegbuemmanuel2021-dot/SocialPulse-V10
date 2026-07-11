@@ -1,5 +1,21 @@
 <template>
   <div class="search-page">
+    <div class="search-bar-wrap">
+      <div class="search-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input
+          class="search-input"
+          v-model="query"
+          placeholder="Search videos, users, #hashtags…"
+          @input="onInput"
+          autofocus
+        />
+        <button v-if="query" class="clear-btn" @click="query = ''; results = null">✕</button>
+      </div>
+    </div>
+
     <div class="search-content">
       <!-- Tabs -->
       <div class="search-tabs" v-if="results">
@@ -64,7 +80,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { searchVideos } from '@/services/videos'
 import { searchUsers } from '@/services/users'
@@ -80,6 +96,13 @@ const tab     = ref('Videos')
 const tabs    = ['Videos', 'Users']
 const trendingTags = ref([])
 const trending     = ref([])
+
+let debounce = null
+
+function onInput () {
+  clearTimeout(debounce)
+  debounce = setTimeout(() => doSearch(), 400)
+}
 
 async function doSearch () {
   if (!query.value.trim()) { results.value = null; return }
@@ -106,6 +129,10 @@ onMounted(async () => {
 
 <style scoped>
 .search-page { min-height: calc(100vh - 56px); padding-top: 56px; padding-bottom: 80px; }
+.search-bar-wrap { position: sticky; top: 56px; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px 20px; }
+.search-bar { display: flex; align-items: center; gap: 10px; background: var(--bg3); border-radius: 24px; padding: 10px 16px; max-width: 600px; margin: 0 auto; }
+.search-input { flex: 1; background: none; border: none; outline: none; font-size: 0.95rem; color: var(--text); }
+.clear-btn { color: var(--text3); font-size: 1rem; }
 .search-content { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
 .search-tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
 .search-tab { padding: 8px 20px; font-weight: 600; color: var(--text2); border-bottom: 2px solid transparent; transition: all 0.2s; }
