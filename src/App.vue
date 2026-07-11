@@ -1,10 +1,10 @@
 <template>
-  <div class="app-shell">
+  <div class="app-shell" :class="{ 'home-feed-mode': isHome }">
     <!-- Top Navigation -->
     <header class="top-nav" v-if="!isAuthPage">
       <router-link to="/" class="nav-logo">SocialPulse</router-link>
 
-      <div class="nav-search">
+      <div class="nav-search" v-if="route.name !== 'search'">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
@@ -19,7 +19,7 @@
         <!-- Upload -->
         <router-link v-if="auth.isAuthenticated" to="/upload" class="btn btn-primary btn-sm">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-          Upload
+          <span class="nav-upload-label">Upload</span>
         </router-link>
 
         <!-- Notifications -->
@@ -118,6 +118,7 @@ const unreadNotifs   = ref(0)
 const unreadMessages = ref(0)
 
 const isAuthPage = computed(() => ['login', 'register'].includes(route.name))
+const isHome      = computed(() => route.name === 'home')
 
 const goSearch = () => {
   if (searchQ.value.trim()) router.push({ name: 'search', query: { q: searchQ.value.trim() } })

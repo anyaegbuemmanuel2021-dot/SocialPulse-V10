@@ -87,6 +87,7 @@ export const SCHEMAS = {
       { key: 'description',   type: 'string',   required: false, size: 2000 },
       { key: 'video_url',            type: 'string',   required: true,  size: 2048 },
       { key: 'video_public_id',      type: 'string',   required: false, size: 255  },
+      { key: 'media_type',           type: 'string',   required: false, size: 20   },
       { key: 'thumbnail_url',        type: 'string',   required: false, size: 2048 },
       { key: 'thumbnail_public_id',  type: 'string',   required: false, size: 255  },
       { key: 'duration',      type: 'double',   required: false },

@@ -72,14 +72,16 @@
         </div>
       </div>
 
-      <!-- Video grid -->
-      <div v-else-if="videos.length" class="video-grid">
-        <VideoCard
-          v-for="v in videos" :key="v.$id"
+      <!-- Reel feed -->
+      <div v-else-if="videos.length" ref="reelContainer" class="reel-feed">
+        <VideoReel
+          v-for="(v, i) in videos" :key="v.$id"
           :video="v"
           @liked="handleLike"
           @saved="handleSave"
+          @in-view="checkLoadMore(i)"
         />
+        <div v-if="loading" class="reel-loading-more">Loading more…</div>
       </div>
 
       <!-- Empty state -->
@@ -93,12 +95,6 @@
         <router-link v-if="!auth.isAuthenticated" to="/register" class="btn btn-primary mt-4">Get Started</router-link>
       </div>
 
-      <!-- Load more -->
-      <div v-if="videos.length && hasMore" class="load-more">
-        <button class="btn btn-secondary" :disabled="loading" @click="loadMore">
-          {{ loading ? 'Loading…' : 'Load more' }}
-        </button>
-      </div>
     </main>
   </div>
 </template>
@@ -109,7 +105,7 @@ import { useAuthStore } from '@/stores/auth'
 import { getForYouFeed, getFollowingFeed, getTrendingFeed, getHashtagFeed, getTrendingHashtags, getTrendingCreators } from '@/services/feed'
 import { likeVideo, unlikeVideo, isVideoLiked } from '@/services/videos'
 import { saveVideo, unsaveVideo } from '@/services/social'
-import VideoCard from '@/components/VideoCard.vue'
+import VideoReel from '@/components/VideoReel.vue'
 
 /* ─ SVG icon components ─ */
 const IconHome     = { template: `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>` }
@@ -136,6 +132,7 @@ const offset          = ref(0)
 const currentHashtag  = ref('')
 const trendingTags    = ref([])
 const suggestedCreators = ref([])
+const reelContainer   = ref(null)
 const LIMIT = 20
 
 async function fetchVideos (reset = true) {
@@ -173,6 +170,13 @@ function setHashtag (tag) { currentHashtag.value = tag; activeTab.value = 'hasht
 function clearHashtag  () { currentHashtag.value = ''; activeTab.value = 'foryou'; fetchVideos(true) }
 function loadMore      () { fetchVideos(false) }
 function fmtNum (n = 0) { return n >= 1000 ? (n / 1000).toFixed(1) + 'k' : n }
+
+// Called when a reel becomes the active (mostly-visible) one in the feed.
+// Once the viewer is within 3 reels of the end, quietly fetch the next page
+// so scrolling never hits a dead stop.
+function checkLoadMore (index) {
+  if (index >= videos.value.length - 3) loadMore()
+}
 
 function handleLike ({ videoId, liked }) {
   const v = videos.value.find(v => v.$id === videoId)
@@ -233,4 +237,44 @@ onMounted(async () => {
 .load-more { text-align: center; margin-top: 24px; }
 
 .skeleton-card { overflow: hidden; }
+
+/* ── Vertical reel feed ───────────────────────────────────────────────────── */
+.reel-feed {
+  height: calc(100vh - var(--nav-h) - 60px); /* minus top nav + feed-tabs */
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  border-radius: 16px;
+  -ms-overflow-style: none;     /* hide scrollbar: IE/Edge */
+  scrollbar-width: none;        /* hide scrollbar: Firefox */
+}
+.reel-feed::-webkit-scrollbar { display: none; } /* hide scrollbar: Chrome/Safari */
+
+.reel-loading-more {
+  height: 60px; display: flex; align-items: center; justify-content: center;
+  color: var(--text3); font-size: 0.85rem; scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+  .reel-feed {
+    /* Full screen like TikTok — no top nav (hidden) and the bottom nav now
+       floats transparently over the video instead of reserving space. */
+    height: 100vh;
+    height: 100dvh; /* accounts for mobile browser chrome, where supported */
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+  }
+  .page-with-sidebar { padding-top: 0; }
+  .main-content.feed-main { padding: 0; }
+  .feed-tabs {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 20;
+    padding: calc(14px + env(safe-area-inset-top, 0px)) 16px 10px;
+    margin-bottom: 0; border-bottom: none;
+    background: linear-gradient(to bottom, rgba(0,0,0,.55), transparent);
+  }
+  .feed-tab { color: rgba(255,255,255,.75); }
+  .feed-tab.active { color: #fff; border-bottom-color: #fff; }
+  .video-grid, .empty-state { padding: 60px 16px 16px; }
+}
 </style>

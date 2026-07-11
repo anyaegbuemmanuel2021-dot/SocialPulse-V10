@@ -120,6 +120,19 @@ input, textarea, select { font: inherit; }
 }
 .avatar-sm { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
 
+@media (max-width: 640px) {
+  /* The bottom nav already has a Search icon, so the nav-search box is
+     redundant screen-real-estate on a phone-width top bar and is the
+     main thing that was pushing this bar into horizontal overflow. */
+  .nav-search { display: none; }
+}
+@media (max-width: 480px) {
+  /* Icon-only Upload button — keeps the top bar from overflowing on the
+     narrowest phones (iPhone SE / small Android, ~320-375px). */
+  .nav-upload-label { display: none; }
+  .nav-actions .btn-primary.btn-sm { padding: 8px; width: 34px; }
+}
+
 /* ── Sidebar ───────────────────────────────────────────────────────────────── */
 .sidebar {
   position: sticky; top: var(--nav-h); height: calc(100vh - var(--nav-h));
@@ -155,6 +168,20 @@ input, textarea, select { font: inherit; }
   padding: 4px 0; transition: color var(--transition);
 }
 .bottom-nav a.active, .bottom-nav a:hover { color: var(--primary); }
+
+/* ── Mobile full-screen feed (TikTok-style) ──────────────────────────────────
+   On the Home feed, on phones, the top nav goes away entirely and the
+   bottom nav floats transparently over the video instead of reserving its
+   own strip — the video gets the full viewport, matching the reference. */
+@media (max-width: 900px) {
+  .home-feed-mode .top-nav { display: none; }
+  .home-feed-mode .bottom-nav {
+    background: linear-gradient(to top, rgba(0,0,0,.6), transparent);
+    border-top: none;
+  }
+  .home-feed-mode .bottom-nav a { color: rgba(255,255,255,.85); text-shadow: 0 1px 4px rgba(0,0,0,.5); }
+  .home-feed-mode .bottom-nav a.active, .home-feed-mode .bottom-nav a:hover { color: #fff; }
+}
 
 /* ── Cards ─────────────────────────────────────────────────────────────────── */
 .card {

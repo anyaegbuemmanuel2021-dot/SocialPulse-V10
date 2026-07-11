@@ -1,5 +1,5 @@
 import { databases, DB, C, B, uid, now } from '@/config/appwrite'
-import { Query, ID } from 'appwrite'
+import { Query } from 'appwrite'
 import { uploadMedia, deleteMedia, deleteLegacyStorageFile } from '@/services/media'
 
 // ── CRUD ──────────────────────────────────────────────────────────────────────
@@ -10,6 +10,7 @@ export async function createVideo (userId, data) {
     description:         data.description          || '',
     video_url:           data.video_url            || '',
     video_public_id:     data.video_public_id      || '',
+    media_type:          data.media_type            || 'video',
     thumbnail_url:       data.thumbnail_url        || '',
     thumbnail_public_id: data.thumbnail_public_id  || '',
     duration:            data.duration             || 0,
@@ -50,7 +51,7 @@ export async function deleteVideo (videoId) {
   // dangling document never outlives the media it points to. Records
   // created before the Cloudinary migration have a url but no public_id —
   // fall back to the old Appwrite Storage delete for those.
-  if (v.video_public_id) await deleteMedia(v.video_public_id, 'video')
+  if (v.video_public_id) await deleteMedia(v.video_public_id, v.media_type === 'image' ? 'image' : 'video')
   else await deleteLegacyStorageFile(B.VIDEOS, v.video_url)
 
   if (v.thumbnail_public_id) await deleteMedia(v.thumbnail_public_id, 'image')
@@ -186,6 +187,10 @@ export async function shareVideo (videoId) {
 
 export async function uploadVideoFile (file, onProgress) {
   return uploadMedia(file, 'video', 'socialpulse/videos', onProgress)
+}
+
+export async function uploadImagePost (file, onProgress) {
+  return uploadMedia(file, 'image', 'socialpulse/posts', onProgress)
 }
 
 export async function uploadThumbnail (file) {

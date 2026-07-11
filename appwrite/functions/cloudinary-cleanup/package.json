@@ -1,0 +1,15 @@
+{
+  "name": "cloudinary-cleanup",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "cloudinary": "^2.5.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

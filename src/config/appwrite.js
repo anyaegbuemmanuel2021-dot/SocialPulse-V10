@@ -1,4 +1,4 @@
-import { Client, Account, Databases, Storage, Query, ID } from 'appwrite'
+import { Client, Account, Databases, Storage, Functions, Query, ID } from 'appwrite'
 
 // ---------------------------------------------------------------------------
 // Env resolution + validation
@@ -37,6 +37,7 @@ const client = new Client()
 export const account   = new Account(client)
 export const databases = new Databases(client)
 export const storage   = new Storage(client)
+export const functions = new Functions(client)
 
 // Realtime is not a separate class in the Appwrite SDK — it's accessed via
 // client.subscribe(). The old commented-out `new Realtime(client)` line
@@ -71,12 +72,13 @@ export const C = {
 }
 
 // ---------------------------------------------------------------------------
-// Storage Buckets
+// Storage Buckets (legacy)
 // ---------------------------------------------------------------------------
-// NOTE: all five keys currently resolve to the same 'media' bucket. Left as
-// a single shared bucket (matches original behavior) — if you actually want
-// per-type buckets with different size/permission rules, split these out
-// and create the corresponding buckets in the Appwrite Console.
+// Media (video/thumbnail/avatar/cover/message uploads) now goes to
+// Cloudinary — see src/config/cloudinary.js and src/services/media.js.
+// Appwrite Storage is no longer used for new uploads. This export is kept
+// only so any old code path that still imports B doesn't crash; it can be
+// removed once you've confirmed nothing references it.
 export const B = {
   VIDEOS: 'media',
   THUMBNAILS: 'media',

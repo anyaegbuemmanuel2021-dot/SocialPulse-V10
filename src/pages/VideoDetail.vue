@@ -6,6 +6,7 @@
       <div class="vd-player-col">
         <div class="player-wrap">
           <video
+            v-if="video.media_type !== 'image'"
             ref="videoEl"
             :src="video.video_url"
             :poster="video.thumbnail_url"
@@ -15,6 +16,12 @@
             @timeupdate="onTimeUpdate"
             @ended="onEnded"
           ></video>
+          <img
+            v-else
+            :src="video.video_url"
+            :alt="video.title"
+            class="player-video"
+          />
         </div>
 
         <!-- Meta under video -->

@@ -12,11 +12,14 @@
     <div class="chat-area">
       <!-- Header -->
       <div class="chat-header" v-if="otherUser">
+        <router-link to="/messages" class="chat-back-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </router-link>
         <router-link :to="`/profile/${otherUser.$id}`" class="chat-user">
           <img :src="otherUser.avatar_url || '/default-avatar.svg'" class="avatar avatar-40" />
-          <div>
-            <p class="font-bold">{{ otherUser.display_name }}</p>
-            <p class="text-xs text-muted">@{{ otherUser.username }}</p>
+          <div class="chat-user-text">
+            <p class="font-bold truncate">{{ otherUser.display_name }}</p>
+            <p class="text-xs text-muted truncate">@{{ otherUser.username }}</p>
           </div>
         </router-link>
       </div>
@@ -156,14 +159,21 @@ const timeAgo = (iso) => {
 .conv-sidebar-header { display: flex; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid var(--border); }
 .conv-sidebar-header h2 { font-size: 1rem; font-weight: 700; }
 .chat-area { display: flex; flex-direction: column; overflow: hidden; }
-.chat-header { display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--border); }
-.chat-user { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+.chat-header { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.chat-back-btn {
+  display: none; /* only needed on mobile — desktop still has the sidebar's Back link */
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+  align-items: center; justify-content: center; color: var(--text);
+}
+.chat-back-btn:hover { background: var(--bg3); }
+.chat-user { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; min-width: 0; }
+.chat-user-text { min-width: 0; }
 .messages-list { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
 .msg-row { display: flex; align-items: flex-end; gap: 8px; }
 .msg-mine { flex-direction: row-reverse; }
 .msg-avatar { flex-shrink: 0; }
-.msg-bubble { max-width: 70%; }
-.msg-text { background: var(--bg3); padding: 10px 14px; border-radius: 18px; border-bottom-left-radius: 4px; font-size: 0.9rem; line-height: 1.5; }
+.msg-bubble { max-width: 70%; min-width: 0; }
+.msg-text { background: var(--bg3); padding: 10px 14px; border-radius: 18px; border-bottom-left-radius: 4px; font-size: 0.9rem; line-height: 1.5; overflow-wrap: break-word; word-break: break-word; }
 .msg-mine .msg-text { background: var(--primary); color: white; border-radius: 18px; border-bottom-right-radius: 4px; }
 .msg-media { max-width: 200px; border-radius: 10px; margin-top: 6px; }
 .msg-time { font-size: 0.7rem; color: var(--text3); margin-top: 2px; display: block; }
@@ -177,5 +187,6 @@ const timeAgo = (iso) => {
 @media (max-width: 768px) {
   .conv-page { grid-template-columns: 1fr; }
   .conv-sidebar { display: none; }
+  .chat-back-btn { display: flex; }
 }
 </style>
