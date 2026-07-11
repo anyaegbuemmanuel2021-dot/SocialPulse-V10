@@ -1,0 +1,2123 @@
+Folder PATH listing
+Volume serial number is 000000FD 42D7:DE6C
+C:.
+³   .env
+³   .env.example
+³   .env.local
+³   .env.setup
+³   .gitignore
+³   Dockerfile
+³   index.html
+³   node
+³   npm
+³   package-lock.json
+³   package.json
+³   project-tree.txt
+³   README.md
+³   socialpulse-v10@1.0.0
+³   vite.config.js
+³   
+ÃÄÄÄappwrite
+³   ÃÄÄÄfunctions
+³   ³   ÀÄÄÄcloudinary-cleanup
+³   ³       ³   package.json
+³   ³       ³   README.md
+³   ³       ³   
+³   ³       ÀÄÄÄsrc
+³   ³               main.js
+³   ³               
+³   ÃÄÄÄschema
+³   ³       collections.js
+³   ³       
+³   ÀÄÄÄsetup
+³           setup-collections.js
+³           
+ÃÄÄÄdist
+³   ³   default-avatar.svg
+³   ³   favicon.svg
+³   ³   index.html
+³   ³   
+³   ÀÄÄÄassets
+³           appwrite-BXbKYuxC.js
+³           Conversation-B85kGk-a.js
+³           Conversation-Cd2_BvdB.css
+³           Home-Cs16stjH.css
+³           Home-Csy3mWNC.js
+³           index-DFHTzy7v.css
+³           index-s3WcK5m2.js
+³           Login-B0PGruqP.css
+³           Login-Cu5ADQC3.js
+³           Messages-DsFSIyJN.css
+³           Messages-u7PfmSsu.js
+³           NotFound-BKJOGVyb.js
+³           NotFound-sMK0RFDR.css
+³           Notifications-C-4xEcnc.js
+³           Notifications-DPStpt9m.css
+³           Profile-CJ7rOnIn.css
+³           Profile-Cy-wyVH-.js
+³           Register-k9D80wIe.js
+³           Register-qIi0Xjor.css
+³           Search-D_YlmhvB.css
+³           Search-RDofKolo.js
+³           Settings-BfgYxVdM.css
+³           Settings-DAkP1PV2.js
+³           social-Cg-3djPR.js
+³           Upload-DNdSJdas.js
+³           Upload-WI2VNKIT.css
+³           users-ZYC3k6Kk.js
+³           vendor-CnT64AQV.js
+³           VideoCard-C2R5acn8.css
+³           VideoCard-DR2Fngu1.js
+³           VideoDetail-BjwS3Taj.js
+³           VideoDetail-na8fmmJa.css
+³           videos-Lbo5SW1u.js
+³           _plugin-vue_export-helper-DlAUqK2U.js
+³           
+ÃÄÄÄnode_modules
+³   ³   .package-lock.json
+³   ³   
+³   ÃÄÄÄ.bin
+³   ³       esbuild
+³   ³       esbuild.cmd
+³   ³       esbuild.ps1
+³   ³       nanoid
+³   ³       nanoid.cmd
+³   ³       nanoid.ps1
+³   ³       parser
+³   ³       parser.cmd
+³   ³       parser.ps1
+³   ³       rollup
+³   ³       rollup.cmd
+³   ³       rollup.ps1
+³   ³       vite
+³   ³       vite.cmd
+³   ³       vite.ps1
+³   ³       vue-demi-fix
+³   ³       vue-demi-fix.cmd
+³   ³       vue-demi-fix.ps1
+³   ³       vue-demi-switch
+³   ³       vue-demi-switch.cmd
+³   ³       vue-demi-switch.ps1
+³   ³       
+³   ÃÄÄÄ.vite
+³   ³   ÃÄÄÄdeps_temp_4cf85200
+³   ³   ³       appwrite.js
+³   ³   ³       appwrite.js.map
+³   ³   ³       chunk-5WRI5ZAA.js
+³   ³   ³       chunk-5WRI5ZAA.js.map
+³   ³   ³       chunk-YFT6OQ5R.js
+³   ³   ³       chunk-YFT6OQ5R.js.map
+³   ³   ³       chunk-ZK3RVVAP.js
+³   ³   ³       chunk-ZK3RVVAP.js.map
+³   ³   ³       package.json
+³   ³   ³       pinia.js
+³   ³   ³       pinia.js.map
+³   ³   ³       vue-router.js
+³   ³   ³       vue-router.js.map
+³   ³   ³       vue.js
+³   ³   ³       vue.js.map
+³   ³   ³       
+³   ³   ÀÄÄÄdeps_temp_55ad8f4e
+³   ³           appwrite.js
+³   ³           appwrite.js.map
+³   ³           chunk-5WRI5ZAA.js
+³   ³           chunk-5WRI5ZAA.js.map
+³   ³           chunk-YFT6OQ5R.js
+³   ³           chunk-YFT6OQ5R.js.map
+³   ³           chunk-ZK3RVVAP.js
+³   ³           chunk-ZK3RVVAP.js.map
+³   ³           package.json
+³   ³           pinia.js
+³   ³           pinia.js.map
+³   ³           vue-router.js
+³   ³           vue-router.js.map
+³   ³           vue.js
+³   ³           vue.js.map
+³   ³           
+³   ÃÄÄÄ@babel
+³   ³   ÃÄÄÄhelper-string-parser
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³           index.js
+³   ³   ³           index.js.map
+³   ³   ³           
+³   ³   ÃÄÄÄhelper-validator-identifier
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³           identifier.js
+³   ³   ³           identifier.js.map
+³   ³   ³           index.js
+³   ³   ³           index.js.map
+³   ³   ³           keyword.js
+³   ³   ³           keyword.js.map
+³   ³   ³           
+³   ³   ÃÄÄÄparser
+³   ³   ³   ³   CHANGELOG.md
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³       babel-parser.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄlib
+³   ³   ³   ³       index.js
+³   ³   ³   ³       index.js.map
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄtypings
+³   ³   ³           babel-parser.d.ts
+³   ³   ³           
+³   ³   ÀÄÄÄtypes
+³   ³       ³   LICENSE
+³   ³       ³   package.json
+³   ³       ³   README.md
+³   ³       ³   
+³   ³       ÀÄÄÄlib
+³   ³           ³   index-legacy.d.ts
+³   ³           ³   index.d.ts
+³   ³           ³   index.js
+³   ³           ³   index.js.flow
+³   ³           ³   index.js.map
+³   ³           ³   
+³   ³           ÃÄÄÄasserts
+³   ³           ³   ³   assertNode.js
+³   ³           ³   ³   assertNode.js.map
+³   ³           ³   ³   
+³   ³           ³   ÀÄÄÄgenerated
+³   ³           ³           index.js
+³   ³           ³           index.js.map
+³   ³           ³           
+³   ³           ÃÄÄÄast-types
+³   ³           ³   ÀÄÄÄgenerated
+³   ³           ³           index.js
+³   ³           ³           index.js.map
+³   ³           ³           
+³   ³           ÃÄÄÄbuilders
+³   ³           ³   ³   productions.js
+³   ³           ³   ³   productions.js.map
+³   ³           ³   ³   validateNode.js
+³   ³           ³   ³   validateNode.js.map
+³   ³           ³   ³   
+³   ³           ³   ÃÄÄÄflow
+³   ³           ³   ³       createFlowUnionType.js
+³   ³           ³   ³       createFlowUnionType.js.map
+³   ³           ³   ³       createTypeAnnotationBasedOnTypeof.js
+³   ³           ³   ³       createTypeAnnotationBasedOnTypeof.js.map
+³   ³           ³   ³       
+³   ³           ³   ÃÄÄÄgenerated
+³   ³           ³   ³       index.js
+³   ³           ³   ³       index.js.map
+³   ³           ³   ³       lowercase.js
+³   ³           ³   ³       lowercase.js.map
+³   ³           ³   ³       uppercase.js
+³   ³           ³   ³       uppercase.js.map
+³   ³           ³   ³       
+³   ³           ³   ÃÄÄÄreact
+³   ³           ³   ³       buildChildren.js
+³   ³           ³   ³       buildChildren.js.map
+³   ³           ³   ³       
+³   ³           ³   ÀÄÄÄtypescript
+³   ³           ³           createTSUnionType.js
+³   ³           ³           createTSUnionType.js.map
+³   ³           ³           
+³   ³           ÃÄÄÄclone
+³   ³           ³       clone.js
+³   ³           ³       clone.js.map
+³   ³           ³       cloneDeep.js
+³   ³           ³       cloneDeep.js.map
+³   ³           ³       cloneDeepWithoutLoc.js
+³   ³           ³       cloneDeepWithoutLoc.js.map
+³   ³           ³       cloneNode.js
+³   ³           ³       cloneNode.js.map
+³   ³           ³       cloneWithoutLoc.js
+³   ³           ³       cloneWithoutLoc.js.map
+³   ³           ³       
+³   ³           ÃÄÄÄcomments
+³   ³           ³       addComment.js
+³   ³           ³       addComment.js.map
+³   ³           ³       addComments.js
+³   ³           ³       addComments.js.map
+³   ³           ³       inheritInnerComments.js
+³   ³           ³       inheritInnerComments.js.map
+³   ³           ³       inheritLeadingComments.js
+³   ³           ³       inheritLeadingComments.js.map
+³   ³           ³       inheritsComments.js
+³   ³           ³       inheritsComments.js.map
+³   ³           ³       inheritTrailingComments.js
+³   ³           ³       inheritTrailingComments.js.map
+³   ³           ³       removeComments.js
+³   ³           ³       removeComments.js.map
+³   ³           ³       
+³   ³           ÃÄÄÄconstants
+³   ³           ³   ³   index.js
+³   ³           ³   ³   index.js.map
+³   ³           ³   ³   
+³   ³           ³   ÀÄÄÄgenerated
+³   ³           ³           index.js
+³   ³           ³           index.js.map
+³   ³           ³           
+³   ³           ÃÄÄÄconverters
+³   ³           ³       ensureBlock.js
+³   ³           ³       ensureBlock.js.map
+³   ³           ³       gatherSequenceExpressions.js
+³   ³           ³       gatherSequenceExpressions.js.map
+³   ³           ³       toBindingIdentifierName.js
+³   ³           ³       toBindingIdentifierName.js.map
+³   ³           ³       toBlock.js
+³   ³           ³       toBlock.js.map
+³   ³           ³       toComputedKey.js
+³   ³           ³       toComputedKey.js.map
+³   ³           ³       toExpression.js
+³   ³           ³       toExpression.js.map
+³   ³           ³       toIdentifier.js
+³   ³           ³       toIdentifier.js.map
+³   ³           ³       toKeyAlias.js
+³   ³           ³       toKeyAlias.js.map
+³   ³           ³       toSequenceExpression.js
+³   ³           ³       toSequenceExpression.js.map
+³   ³           ³       toStatement.js
+³   ³           ³       toStatement.js.map
+³   ³           ³       valueToNode.js
+³   ³           ³       valueToNode.js.map
+³   ³           ³       
+³   ³           ÃÄÄÄdefinitions
+³   ³           ³       core.js
+³   ³           ³       core.js.map
+³   ³           ³       deprecated-aliases.js
+³   ³           ³       deprecated-aliases.js.map
+³   ³           ³       experimental.js
+³   ³           ³       experimental.js.map
+³   ³           ³       flow.js
+³   ³           ³       flow.js.map
+³   ³           ³       index.js
+³   ³           ³       index.js.map
+³   ³           ³       jsx.js
+³   ³           ³       jsx.js.map
+³   ³           ³       misc.js
+³   ³           ³       misc.js.map
+³   ³           ³       placeholders.js
+³   ³           ³       placeholders.js.map
+³   ³           ³       typescript.js
+³   ³           ³       typescript.js.map
+³   ³           ³       utils.js
+³   ³           ³       utils.js.map
+³   ³           ³       
+³   ³           ÃÄÄÄmodifications
+³   ³           ³   ³   appendToMemberExpression.js
+³   ³           ³   ³   appendToMemberExpression.js.map
+³   ³           ³   ³   inherits.js
+³   ³           ³   ³   inherits.js.map
+³   ³           ³   ³   prependToMemberExpression.js
+³   ³           ³   ³   prependToMemberExpression.js.map
+³   ³           ³   ³   removeProperties.js
+³   ³           ³   ³   removeProperties.js.map
+³   ³           ³   ³   removePropertiesDeep.js
+³   ³           ³   ³   removePropertiesDeep.js.map
+³   ³           ³   ³   
+³   ³           ³   ÃÄÄÄflow
+³   ³           ³   ³       removeTypeDuplicates.js
+³   ³           ³   ³       removeTypeDuplicates.js.map
+³   ³           ³   ³       
+³   ³           ³   ÀÄÄÄtypescript
+³   ³           ³           removeTypeDuplicates.js
+³   ³           ³           removeTypeDuplicates.js.map
+³   ³           ³           
+³   ³           ÃÄÄÄretrievers
+³   ³           ³       getAssignmentIdentifiers.js
+³   ³           ³       getAssignmentIdentifiers.js.map
+³   ³           ³       getBindingIdentifiers.js
+³   ³           ³       getBindingIdentifiers.js.map
+³   ³           ³       getFunctionName.js
+³   ³           ³       getFunctionName.js.map
+³   ³           ³       getOuterBindingIdentifiers.js
+³   ³           ³       getOuterBindingIdentifiers.js.map
+³   ³           ³       
+³   ³           ÃÄÄÄtraverse
+³   ³           ³       traverse.js
+³   ³           ³       traverse.js.map
+³   ³           ³       traverseFast.js
+³   ³           ³       traverseFast.js.map
+³   ³           ³       
+³   ³           ÃÄÄÄutils
+³   ³           ³   ³   deprecationWarning.js
+³   ³           ³   ³   deprecationWarning.js.map
+³   ³           ³   ³   inherit.js
+³   ³           ³   ³   inherit.js.map
+³   ³           ³   ³   shallowEqual.js
+³   ³           ³   ³   shallowEqual.js.map
+³   ³           ³   ³   
+³   ³           ³   ÀÄÄÄreact
+³   ³           ³           cleanJSXElementLiteralChild.js
+³   ³           ³           cleanJSXElementLiteralChild.js.map
+³   ³           ³           
+³   ³           ÀÄÄÄvalidators
+³   ³               ³   buildMatchMemberExpression.js
+³   ³               ³   buildMatchMemberExpression.js.map
+³   ³               ³   is.js
+³   ³               ³   is.js.map
+³   ³               ³   isBinding.js
+³   ³               ³   isBinding.js.map
+³   ³               ³   isBlockScoped.js
+³   ³               ³   isBlockScoped.js.map
+³   ³               ³   isImmutable.js
+³   ³               ³   isImmutable.js.map
+³   ³               ³   isLet.js
+³   ³               ³   isLet.js.map
+³   ³               ³   isNode.js
+³   ³               ³   isNode.js.map
+³   ³               ³   isNodesEquivalent.js
+³   ³               ³   isNodesEquivalent.js.map
+³   ³               ³   isPlaceholderType.js
+³   ³               ³   isPlaceholderType.js.map
+³   ³               ³   isReferenced.js
+³   ³               ³   isReferenced.js.map
+³   ³               ³   isScope.js
+³   ³               ³   isScope.js.map
+³   ³               ³   isSpecifierDefault.js
+³   ³               ³   isSpecifierDefault.js.map
+³   ³               ³   isType.js
+³   ³               ³   isType.js.map
+³   ³               ³   isValidES3Identifier.js
+³   ³               ³   isValidES3Identifier.js.map
+³   ³               ³   isValidIdentifier.js
+³   ³               ³   isValidIdentifier.js.map
+³   ³               ³   isVar.js
+³   ³               ³   isVar.js.map
+³   ³               ³   matchesPattern.js
+³   ³               ³   matchesPattern.js.map
+³   ³               ³   validate.js
+³   ³               ³   validate.js.map
+³   ³               ³   
+³   ³               ÃÄÄÄgenerated
+³   ³               ³       index.js
+³   ³               ³       index.js.map
+³   ³               ³       
+³   ³               ÀÄÄÄreact
+³   ³                       isCompatTag.js
+³   ³                       isCompatTag.js.map
+³   ³                       isReactComponent.js
+³   ³                       isReactComponent.js.map
+³   ³                       
+³   ÃÄÄÄ@esbuild
+³   ³   ÀÄÄÄwin32-x64
+³   ³           esbuild.exe
+³   ³           package.json
+³   ³           README.md
+³   ³           
+³   ÃÄÄÄ@jridgewell
+³   ³   ÀÄÄÄsourcemap-codec
+³   ³       ³   LICENSE
+³   ³       ³   package.json
+³   ³       ³   README.md
+³   ³       ³   
+³   ³       ÃÄÄÄdist
+³   ³       ³       sourcemap-codec.mjs
+³   ³       ³       sourcemap-codec.mjs.map
+³   ³       ³       sourcemap-codec.umd.js
+³   ³       ³       sourcemap-codec.umd.js.map
+³   ³       ³       
+³   ³       ÃÄÄÄsrc
+³   ³       ³       scopes.ts
+³   ³       ³       sourcemap-codec.ts
+³   ³       ³       strings.ts
+³   ³       ³       vlq.ts
+³   ³       ³       
+³   ³       ÀÄÄÄtypes
+³   ³               scopes.d.cts
+³   ³               scopes.d.cts.map
+³   ³               scopes.d.mts
+³   ³               scopes.d.mts.map
+³   ³               sourcemap-codec.d.cts
+³   ³               sourcemap-codec.d.cts.map
+³   ³               sourcemap-codec.d.mts
+³   ³               sourcemap-codec.d.mts.map
+³   ³               strings.d.cts
+³   ³               strings.d.cts.map
+³   ³               strings.d.mts
+³   ³               strings.d.mts.map
+³   ³               vlq.d.cts
+³   ³               vlq.d.cts.map
+³   ³               vlq.d.mts
+³   ³               vlq.d.mts.map
+³   ³               
+³   ÃÄÄÄ@rollup
+³   ³   ÃÄÄÄrollup-win32-x64-gnu
+³   ³   ³       package.json
+³   ³   ³       README.md
+³   ³   ³       rollup.win32-x64-gnu.node
+³   ³   ³       
+³   ³   ÀÄÄÄrollup-win32-x64-msvc
+³   ³           package.json
+³   ³           README.md
+³   ³           rollup.win32-x64-msvc.node
+³   ³           
+³   ÃÄÄÄ@types
+³   ³   ÀÄÄÄestree
+³   ³           flow.d.ts
+³   ³           index.d.ts
+³   ³           LICENSE
+³   ³           package.json
+³   ³           README.md
+³   ³           
+³   ÃÄÄÄ@vitejs
+³   ³   ÀÄÄÄplugin-vue
+³   ³       ³   LICENSE
+³   ³       ³   package.json
+³   ³       ³   README.md
+³   ³       ³   
+³   ³       ÀÄÄÄdist
+³   ³               index.cjs
+³   ³               index.d.cts
+³   ³               index.d.mts
+³   ³               index.d.ts
+³   ³               index.mjs
+³   ³               
+³   ÃÄÄÄ@vue
+³   ³   ÃÄÄÄcompiler-core
+³   ³   ³   ³   index.js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           compiler-core.cjs.js
+³   ³   ³           compiler-core.cjs.prod.js
+³   ³   ³           compiler-core.d.ts
+³   ³   ³           compiler-core.esm-bundler.js
+³   ³   ³           
+³   ³   ÃÄÄÄcompiler-dom
+³   ³   ³   ³   index.js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           compiler-dom.cjs.js
+³   ³   ³           compiler-dom.cjs.prod.js
+³   ³   ³           compiler-dom.d.ts
+³   ³   ³           compiler-dom.esm-browser.js
+³   ³   ³           compiler-dom.esm-browser.prod.js
+³   ³   ³           compiler-dom.esm-bundler.js
+³   ³   ³           compiler-dom.global.js
+³   ³   ³           compiler-dom.global.prod.js
+³   ³   ³           
+³   ³   ÃÄÄÄcompiler-sfc
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           compiler-sfc.cjs.js
+³   ³   ³           compiler-sfc.d.ts
+³   ³   ³           compiler-sfc.esm-browser.js
+³   ³   ³           
+³   ³   ÃÄÄÄcompiler-ssr
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           compiler-ssr.cjs.js
+³   ³   ³           compiler-ssr.d.ts
+³   ³   ³           
+³   ³   ÃÄÄÄdevtools-api
+³   ³   ³   ³   package.json
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³       ÃÄÄÄcjs
+³   ³   ³       ³   ³   const.js
+³   ³   ³       ³   ³   env.js
+³   ³   ³       ³   ³   index.js
+³   ³   ³       ³   ³   plugin.js
+³   ³   ³       ³   ³   proxy.js
+³   ³   ³       ³   ³   time.js
+³   ³   ³       ³   ³   
+³   ³   ³       ³   ÀÄÄÄapi
+³   ³   ³       ³           api.js
+³   ³   ³       ³           app.js
+³   ³   ³       ³           component.js
+³   ³   ³       ³           context.js
+³   ³   ³       ³           hooks.js
+³   ³   ³       ³           index.js
+³   ³   ³       ³           util.js
+³   ³   ³       ³           
+³   ³   ³       ÀÄÄÄesm
+³   ³   ³           ³   const.d.ts
+³   ³   ³           ³   const.js
+³   ³   ³           ³   env.d.ts
+³   ³   ³           ³   env.js
+³   ³   ³           ³   index.d.ts
+³   ³   ³           ³   index.js
+³   ³   ³           ³   plugin.d.ts
+³   ³   ³           ³   plugin.js
+³   ³   ³           ³   proxy.d.ts
+³   ³   ³           ³   proxy.js
+³   ³   ³           ³   time.d.ts
+³   ³   ³           ³   time.js
+³   ³   ³           ³   
+³   ³   ³           ÀÄÄÄapi
+³   ³   ³                   api.d.ts
+³   ³   ³                   api.js
+³   ³   ³                   app.d.ts
+³   ³   ³                   app.js
+³   ³   ³                   component.d.ts
+³   ³   ³                   component.js
+³   ³   ³                   context.d.ts
+³   ³   ³                   context.js
+³   ³   ³                   hooks.d.ts
+³   ³   ³                   hooks.js
+³   ³   ³                   index.d.ts
+³   ³   ³                   index.js
+³   ³   ³                   util.d.ts
+³   ³   ³                   util.js
+³   ³   ³                   
+³   ³   ÃÄÄÄreactivity
+³   ³   ³   ³   index.js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           reactivity.cjs.js
+³   ³   ³           reactivity.cjs.prod.js
+³   ³   ³           reactivity.d.ts
+³   ³   ³           reactivity.esm-browser.js
+³   ³   ³           reactivity.esm-browser.prod.js
+³   ³   ³           reactivity.esm-bundler.js
+³   ³   ³           reactivity.global.js
+³   ³   ³           reactivity.global.prod.js
+³   ³   ³           
+³   ³   ÃÄÄÄruntime-core
+³   ³   ³   ³   index.js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           runtime-core.cjs.js
+³   ³   ³           runtime-core.cjs.prod.js
+³   ³   ³           runtime-core.d.ts
+³   ³   ³           runtime-core.esm-bundler.js
+³   ³   ³           
+³   ³   ÃÄÄÄruntime-dom
+³   ³   ³   ³   index.js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           runtime-dom.cjs.js
+³   ³   ³           runtime-dom.cjs.prod.js
+³   ³   ³           runtime-dom.d.ts
+³   ³   ³           runtime-dom.esm-browser.js
+³   ³   ³           runtime-dom.esm-browser.prod.js
+³   ³   ³           runtime-dom.esm-bundler.js
+³   ³   ³           runtime-dom.global.js
+³   ³   ³           runtime-dom.global.prod.js
+³   ³   ³           
+³   ³   ÃÄÄÄserver-renderer
+³   ³   ³   ³   index.js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           server-renderer.cjs.js
+³   ³   ³           server-renderer.cjs.prod.js
+³   ³   ³           server-renderer.d.ts
+³   ³   ³           server-renderer.esm-browser.js
+³   ³   ³           server-renderer.esm-browser.prod.js
+³   ³   ³           server-renderer.esm-bundler.js
+³   ³   ³           
+³   ³   ÀÄÄÄshared
+³   ³       ³   index.js
+³   ³       ³   LICENSE
+³   ³       ³   package.json
+³   ³       ³   README.md
+³   ³       ³   
+³   ³       ÀÄÄÄdist
+³   ³               shared.cjs.js
+³   ³               shared.cjs.prod.js
+³   ³               shared.d.ts
+³   ³               shared.esm-bundler.js
+³   ³               
+³   ÃÄÄÄappwrite
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÃÄÄÄdist
+³   ³   ³   ÃÄÄÄcjs
+³   ³   ³   ³       package.json
+³   ³   ³   ³       sdk.js
+³   ³   ³   ³       sdk.js.map
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄesm
+³   ³   ³   ³       package.json
+³   ³   ³   ³       sdk.js
+³   ³   ³   ³       sdk.js.map
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄiife
+³   ³   ³           sdk.js
+³   ³   ³           
+³   ³   ÀÄÄÄtypes
+³   ³       ³   channel.d.ts
+³   ³       ³   client.d.ts
+³   ³       ³   id.d.ts
+³   ³       ³   index.d.ts
+³   ³       ³   models.d.ts
+³   ³       ³   operator.d.ts
+³   ³       ³   permission.d.ts
+³   ³       ³   query.d.ts
+³   ³       ³   role.d.ts
+³   ³       ³   service.d.ts
+³   ³       ³   
+³   ³       ÃÄÄÄenums
+³   ³       ³       authentication-factor.d.ts
+³   ³       ³       authenticator-type.d.ts
+³   ³       ³       browser-permission.d.ts
+³   ³       ³       browser-theme.d.ts
+³   ³       ³       browser.d.ts
+³   ³       ³       credit-card.d.ts
+³   ³       ³       execution-method.d.ts
+³   ³       ³       execution-status.d.ts
+³   ³       ³       execution-trigger.d.ts
+³   ³       ³       flag.d.ts
+³   ³       ³       image-format.d.ts
+³   ³       ³       image-gravity.d.ts
+³   ³       ³       o-auth-provider.d.ts
+³   ³       ³       timezone.d.ts
+³   ³       ³       
+³   ³       ÀÄÄÄservices
+³   ³               account.d.ts
+³   ³               avatars.d.ts
+³   ³               databases.d.ts
+³   ³               functions.d.ts
+³   ³               graphql.d.ts
+³   ³               locale.d.ts
+³   ³               messaging.d.ts
+³   ³               presences.d.ts
+³   ³               realtime.d.ts
+³   ³               storage.d.ts
+³   ³               tables-db.d.ts
+³   ³               teams.d.ts
+³   ³               
+³   ÃÄÄÄbignumber.js
+³   ³   ³   bignumber.d.mts
+³   ³   ³   bignumber.d.ts
+³   ³   ³   bignumber.js
+³   ³   ³   bignumber.mjs
+³   ³   ³   CHANGELOG.md
+³   ³   ³   LICENCE.md
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   types.d.ts
+³   ³   ³   
+³   ³   ÀÄÄÄdoc
+³   ³           API.html
+³   ³           
+³   ÃÄÄÄcsstype
+³   ³       index.d.ts
+³   ³       index.js.flow
+³   ³       LICENSE
+³   ³       package.json
+³   ³       README.md
+³   ³       
+³   ÃÄÄÄdotenv
+³   ³   ³   CHANGELOG.md
+³   ³   ³   config.d.ts
+³   ³   ³   config.js
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README-es.md
+³   ³   ³   README.md
+³   ³   ³   SECURITY.md
+³   ³   ³   
+³   ³   ÃÄÄÄlib
+³   ³   ³       cli-options.js
+³   ³   ³       env-options.js
+³   ³   ³       main.d.ts
+³   ³   ³       main.js
+³   ³   ³       
+³   ³   ÀÄÄÄskills
+³   ³       ÃÄÄÄdotenv
+³   ³       ³       SKILL.md
+³   ³       ³       
+³   ³       ÀÄÄÄdotenvx
+³   ³               SKILL.md
+³   ³               
+³   ÃÄÄÄentities
+³   ³   ³   decode.d.ts
+³   ³   ³   decode.js
+³   ³   ³   escape.d.ts
+³   ³   ³   escape.js
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   readme.md
+³   ³   ³   
+³   ³   ÃÄÄÄdist
+³   ³   ³   ÃÄÄÄcommonjs
+³   ³   ³   ³   ³   decode-codepoint.d.ts
+³   ³   ³   ³   ³   decode-codepoint.d.ts.map
+³   ³   ³   ³   ³   decode-codepoint.js
+³   ³   ³   ³   ³   decode-codepoint.js.map
+³   ³   ³   ³   ³   decode.d.ts
+³   ³   ³   ³   ³   decode.d.ts.map
+³   ³   ³   ³   ³   decode.js
+³   ³   ³   ³   ³   decode.js.map
+³   ³   ³   ³   ³   encode.d.ts
+³   ³   ³   ³   ³   encode.d.ts.map
+³   ³   ³   ³   ³   encode.js
+³   ³   ³   ³   ³   encode.js.map
+³   ³   ³   ³   ³   escape.d.ts
+³   ³   ³   ³   ³   escape.d.ts.map
+³   ³   ³   ³   ³   escape.js
+³   ³   ³   ³   ³   escape.js.map
+³   ³   ³   ³   ³   index.d.ts
+³   ³   ³   ³   ³   index.d.ts.map
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   index.js.map
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÃÄÄÄgenerated
+³   ³   ³   ³   ³       decode-data-html.d.ts
+³   ³   ³   ³   ³       decode-data-html.d.ts.map
+³   ³   ³   ³   ³       decode-data-html.js
+³   ³   ³   ³   ³       decode-data-html.js.map
+³   ³   ³   ³   ³       decode-data-xml.d.ts
+³   ³   ³   ³   ³       decode-data-xml.d.ts.map
+³   ³   ³   ³   ³       decode-data-xml.js
+³   ³   ³   ³   ³       decode-data-xml.js.map
+³   ³   ³   ³   ³       encode-html.d.ts
+³   ³   ³   ³   ³       encode-html.d.ts.map
+³   ³   ³   ³   ³       encode-html.js
+³   ³   ³   ³   ³       encode-html.js.map
+³   ³   ³   ³   ³       
+³   ³   ³   ³   ÀÄÄÄinternal
+³   ³   ³   ³           bin-trie-flags.d.ts
+³   ³   ³   ³           bin-trie-flags.d.ts.map
+³   ³   ³   ³           bin-trie-flags.js
+³   ³   ³   ³           bin-trie-flags.js.map
+³   ³   ³   ³           decode-shared.d.ts
+³   ³   ³   ³           decode-shared.d.ts.map
+³   ³   ³   ³           decode-shared.js
+³   ³   ³   ³           decode-shared.js.map
+³   ³   ³   ³           encode-shared.d.ts
+³   ³   ³   ³           encode-shared.d.ts.map
+³   ³   ³   ³           encode-shared.js
+³   ³   ³   ³           encode-shared.js.map
+³   ³   ³   ³           
+³   ³   ³   ÀÄÄÄesm
+³   ³   ³       ³   decode-codepoint.d.ts
+³   ³   ³       ³   decode-codepoint.d.ts.map
+³   ³   ³       ³   decode-codepoint.js
+³   ³   ³       ³   decode-codepoint.js.map
+³   ³   ³       ³   decode.d.ts
+³   ³   ³       ³   decode.d.ts.map
+³   ³   ³       ³   decode.js
+³   ³   ³       ³   decode.js.map
+³   ³   ³       ³   encode.d.ts
+³   ³   ³       ³   encode.d.ts.map
+³   ³   ³       ³   encode.js
+³   ³   ³       ³   encode.js.map
+³   ³   ³       ³   escape.d.ts
+³   ³   ³       ³   escape.d.ts.map
+³   ³   ³       ³   escape.js
+³   ³   ³       ³   escape.js.map
+³   ³   ³       ³   index.d.ts
+³   ³   ³       ³   index.d.ts.map
+³   ³   ³       ³   index.js
+³   ³   ³       ³   index.js.map
+³   ³   ³       ³   package.json
+³   ³   ³       ³   
+³   ³   ³       ÃÄÄÄgenerated
+³   ³   ³       ³       decode-data-html.d.ts
+³   ³   ³       ³       decode-data-html.d.ts.map
+³   ³   ³       ³       decode-data-html.js
+³   ³   ³       ³       decode-data-html.js.map
+³   ³   ³       ³       decode-data-xml.d.ts
+³   ³   ³       ³       decode-data-xml.d.ts.map
+³   ³   ³       ³       decode-data-xml.js
+³   ³   ³       ³       decode-data-xml.js.map
+³   ³   ³       ³       encode-html.d.ts
+³   ³   ³       ³       encode-html.d.ts.map
+³   ³   ³       ³       encode-html.js
+³   ³   ³       ³       encode-html.js.map
+³   ³   ³       ³       
+³   ³   ³       ÀÄÄÄinternal
+³   ³   ³               bin-trie-flags.d.ts
+³   ³   ³               bin-trie-flags.d.ts.map
+³   ³   ³               bin-trie-flags.js
+³   ³   ³               bin-trie-flags.js.map
+³   ³   ³               decode-shared.d.ts
+³   ³   ³               decode-shared.d.ts.map
+³   ³   ³               decode-shared.js
+³   ³   ³               decode-shared.js.map
+³   ³   ³               encode-shared.d.ts
+³   ³   ³               encode-shared.d.ts.map
+³   ³   ³               encode-shared.js
+³   ³   ³               encode-shared.js.map
+³   ³   ³               
+³   ³   ÀÄÄÄsrc
+³   ³       ³   decode-codepoint.ts
+³   ³       ³   decode.ts
+³   ³       ³   encode.ts
+³   ³       ³   escape.ts
+³   ³       ³   index.ts
+³   ³       ³   
+³   ³       ÃÄÄÄgenerated
+³   ³       ³       .eslintrc.json
+³   ³       ³       decode-data-html.ts
+³   ³       ³       decode-data-xml.ts
+³   ³       ³       encode-html.ts
+³   ³       ³       
+³   ³       ÀÄÄÄinternal
+³   ³               bin-trie-flags.ts
+³   ³               decode-shared.ts
+³   ³               encode-shared.ts
+³   ³               
+³   ÃÄÄÄesbuild
+³   ³   ³   install.js
+³   ³   ³   LICENSE.md
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÃÄÄÄbin
+³   ³   ³       esbuild
+³   ³   ³       
+³   ³   ÀÄÄÄlib
+³   ³           main.d.ts
+³   ³           main.js
+³   ³           
+³   ÃÄÄÄestree-walker
+³   ³   ³   CHANGELOG.md
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÃÄÄÄdist
+³   ³   ³   ÃÄÄÄesm
+³   ³   ³   ³       estree-walker.js
+³   ³   ³   ³       package.json
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄumd
+³   ³   ³           estree-walker.js
+³   ³   ³           
+³   ³   ÃÄÄÄsrc
+³   ³   ³       async.js
+³   ³   ³       index.js
+³   ³   ³       package.json
+³   ³   ³       sync.js
+³   ³   ³       walker.js
+³   ³   ³       
+³   ³   ÀÄÄÄtypes
+³   ³           async.d.ts
+³   ³           index.d.ts
+³   ³           sync.d.ts
+³   ³           tsconfig.tsbuildinfo
+³   ³           walker.d.ts
+³   ³           
+³   ÃÄÄÄjson-bigint
+³   ³   ³   index.js
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÀÄÄÄlib
+³   ³           parse.js
+³   ³           stringify.js
+³   ³           
+³   ÃÄÄÄmagic-string
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÀÄÄÄdist
+³   ³           magic-string.cjs.d.ts
+³   ³           magic-string.cjs.js
+³   ³           magic-string.cjs.js.map
+³   ³           magic-string.es.d.mts
+³   ³           magic-string.es.mjs
+³   ³           magic-string.es.mjs.map
+³   ³           magic-string.umd.js
+³   ³           magic-string.umd.js.map
+³   ³           
+³   ÃÄÄÄnanoid
+³   ³   ³   index.browser.cjs
+³   ³   ³   index.browser.js
+³   ³   ³   index.cjs
+³   ³   ³   index.d.cts
+³   ³   ³   index.d.ts
+³   ³   ³   index.js
+³   ³   ³   LICENSE
+³   ³   ³   nanoid.js
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÃÄÄÄasync
+³   ³   ³       index.browser.cjs
+³   ³   ³       index.browser.js
+³   ³   ³       index.cjs
+³   ³   ³       index.d.ts
+³   ³   ³       index.js
+³   ³   ³       index.native.js
+³   ³   ³       package.json
+³   ³   ³       
+³   ³   ÃÄÄÄbin
+³   ³   ³       nanoid.cjs
+³   ³   ³       
+³   ³   ÃÄÄÄnon-secure
+³   ³   ³       index.cjs
+³   ³   ³       index.d.ts
+³   ³   ³       index.js
+³   ³   ³       package.json
+³   ³   ³       
+³   ³   ÀÄÄÄurl-alphabet
+³   ³           index.cjs
+³   ³           index.js
+³   ³           package.json
+³   ³           
+³   ÃÄÄÄnode-appwrite
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÀÄÄÄdist
+³   ³       ³   client.d.mts
+³   ³       ³   client.d.ts
+³   ³       ³   client.js
+³   ³       ³   client.js.map
+³   ³       ³   client.mjs
+³   ³       ³   client.mjs.map
+³   ³       ³   id.d.mts
+³   ³       ³   id.d.ts
+³   ³       ³   id.js
+³   ³       ³   id.js.map
+³   ³       ³   id.mjs
+³   ³       ³   id.mjs.map
+³   ³       ³   index.d.mts
+³   ³       ³   index.d.ts
+³   ³       ³   index.js
+³   ³       ³   index.js.map
+³   ³       ³   index.mjs
+³   ³       ³   index.mjs.map
+³   ³       ³   inputFile.d.mts
+³   ³       ³   inputFile.d.ts
+³   ³       ³   inputFile.js
+³   ³       ³   inputFile.js.map
+³   ³       ³   inputFile.mjs
+³   ³       ³   inputFile.mjs.map
+³   ³       ³   models.d.mts
+³   ³       ³   models.d.ts
+³   ³       ³   models.js
+³   ³       ³   models.js.map
+³   ³       ³   models.mjs
+³   ³       ³   models.mjs.map
+³   ³       ³   operator.d.mts
+³   ³       ³   operator.d.ts
+³   ³       ³   operator.js
+³   ³       ³   operator.js.map
+³   ³       ³   operator.mjs
+³   ³       ³   operator.mjs.map
+³   ³       ³   permission.d.mts
+³   ³       ³   permission.d.ts
+³   ³       ³   permission.js
+³   ³       ³   permission.js.map
+³   ³       ³   permission.mjs
+³   ³       ³   permission.mjs.map
+³   ³       ³   query.d.mts
+³   ³       ³   query.d.ts
+³   ³       ³   query.js
+³   ³       ³   query.js.map
+³   ³       ³   query.mjs
+³   ³       ³   query.mjs.map
+³   ³       ³   role.d.mts
+³   ³       ³   role.d.ts
+³   ³       ³   role.js
+³   ³       ³   role.js.map
+³   ³       ³   role.mjs
+³   ³       ³   role.mjs.map
+³   ³       ³   
+³   ³       ÃÄÄÄenums
+³   ³       ³       adapter.d.mts
+³   ³       ³       adapter.d.ts
+³   ³       ³       adapter.js
+³   ³       ³       adapter.js.map
+³   ³       ³       adapter.mjs
+³   ³       ³       adapter.mjs.map
+³   ³       ³       attribute-status.d.mts
+³   ³       ³       attribute-status.d.ts
+³   ³       ³       attribute-status.js
+³   ³       ³       attribute-status.js.map
+³   ³       ³       attribute-status.mjs
+³   ³       ³       attribute-status.mjs.map
+³   ³       ³       authentication-factor.d.mts
+³   ³       ³       authentication-factor.d.ts
+³   ³       ³       authentication-factor.js
+³   ³       ³       authentication-factor.js.map
+³   ³       ³       authentication-factor.mjs
+³   ³       ³       authentication-factor.mjs.map
+³   ³       ³       authenticator-type.d.mts
+³   ³       ³       authenticator-type.d.ts
+³   ³       ³       authenticator-type.js
+³   ³       ³       authenticator-type.js.map
+³   ³       ³       authenticator-type.mjs
+³   ³       ³       authenticator-type.mjs.map
+³   ³       ³       backup-services.d.mts
+³   ³       ³       backup-services.d.ts
+³   ³       ³       backup-services.js
+³   ³       ³       backup-services.js.map
+³   ³       ³       backup-services.mjs
+³   ³       ³       backup-services.mjs.map
+³   ³       ³       browser-permission.d.mts
+³   ³       ³       browser-permission.d.ts
+³   ³       ³       browser-permission.js
+³   ³       ³       browser-permission.js.map
+³   ³       ³       browser-permission.mjs
+³   ³       ³       browser-permission.mjs.map
+³   ³       ³       browser-theme.d.mts
+³   ³       ³       browser-theme.d.ts
+³   ³       ³       browser-theme.js
+³   ³       ³       browser-theme.js.map
+³   ³       ³       browser-theme.mjs
+³   ³       ³       browser-theme.mjs.map
+³   ³       ³       browser.d.mts
+³   ³       ³       browser.d.ts
+³   ³       ³       browser.js
+³   ³       ³       browser.js.map
+³   ³       ³       browser.mjs
+³   ³       ³       browser.mjs.map
+³   ³       ³       build-runtime.d.mts
+³   ³       ³       build-runtime.d.ts
+³   ³       ³       build-runtime.js
+³   ³       ³       build-runtime.js.map
+³   ³       ³       build-runtime.mjs
+³   ³       ³       build-runtime.mjs.map
+³   ³       ³       column-status.d.mts
+³   ³       ³       column-status.d.ts
+³   ³       ³       column-status.js
+³   ³       ³       column-status.js.map
+³   ³       ³       column-status.mjs
+³   ³       ³       column-status.mjs.map
+³   ³       ³       compression.d.mts
+³   ³       ³       compression.d.ts
+³   ³       ³       compression.js
+³   ³       ³       compression.js.map
+³   ³       ³       compression.mjs
+³   ³       ³       compression.mjs.map
+³   ³       ³       credit-card.d.mts
+³   ³       ³       credit-card.d.ts
+³   ³       ³       credit-card.js
+³   ³       ³       credit-card.js.map
+³   ³       ³       credit-card.mjs
+³   ³       ³       credit-card.mjs.map
+³   ³       ³       database-type.d.mts
+³   ³       ³       database-type.d.ts
+³   ³       ³       database-type.js
+³   ³       ³       database-type.js.map
+³   ³       ³       database-type.mjs
+³   ³       ³       database-type.mjs.map
+³   ³       ³       databases-index-type.d.mts
+³   ³       ³       databases-index-type.d.ts
+³   ³       ³       databases-index-type.js
+³   ³       ³       databases-index-type.js.map
+³   ³       ³       databases-index-type.mjs
+³   ³       ³       databases-index-type.mjs.map
+³   ³       ³       deployment-download-type.d.mts
+³   ³       ³       deployment-download-type.d.ts
+³   ³       ³       deployment-download-type.js
+³   ³       ³       deployment-download-type.js.map
+³   ³       ³       deployment-download-type.mjs
+³   ³       ³       deployment-download-type.mjs.map
+³   ³       ³       deployment-status.d.mts
+³   ³       ³       deployment-status.d.ts
+³   ³       ³       deployment-status.js
+³   ³       ³       deployment-status.js.map
+³   ³       ³       deployment-status.mjs
+³   ³       ³       deployment-status.mjs.map
+³   ³       ³       execution-method.d.mts
+³   ³       ³       execution-method.d.ts
+³   ³       ³       execution-method.js
+³   ³       ³       execution-method.js.map
+³   ³       ³       execution-method.mjs
+³   ³       ³       execution-method.mjs.map
+³   ³       ³       execution-status.d.mts
+³   ³       ³       execution-status.d.ts
+³   ³       ³       execution-status.js
+³   ³       ³       execution-status.js.map
+³   ³       ³       execution-status.mjs
+³   ³       ³       execution-status.mjs.map
+³   ³       ³       execution-trigger.d.mts
+³   ³       ³       execution-trigger.d.ts
+³   ³       ³       execution-trigger.js
+³   ³       ³       execution-trigger.js.map
+³   ³       ³       execution-trigger.mjs
+³   ³       ³       execution-trigger.mjs.map
+³   ³       ³       flag.d.mts
+³   ³       ³       flag.d.ts
+³   ³       ³       flag.js
+³   ³       ³       flag.js.map
+³   ³       ³       flag.mjs
+³   ³       ³       flag.mjs.map
+³   ³       ³       framework.d.mts
+³   ³       ³       framework.d.ts
+³   ³       ³       framework.js
+³   ³       ³       framework.js.map
+³   ³       ³       framework.mjs
+³   ³       ³       framework.mjs.map
+³   ³       ³       health-antivirus-status.d.mts
+³   ³       ³       health-antivirus-status.d.ts
+³   ³       ³       health-antivirus-status.js
+³   ³       ³       health-antivirus-status.js.map
+³   ³       ³       health-antivirus-status.mjs
+³   ³       ³       health-antivirus-status.mjs.map
+³   ³       ³       health-check-status.d.mts
+³   ³       ³       health-check-status.d.ts
+³   ³       ³       health-check-status.js
+³   ³       ³       health-check-status.js.map
+³   ³       ³       health-check-status.mjs
+³   ³       ³       health-check-status.mjs.map
+³   ³       ³       health-queue-name.d.mts
+³   ³       ³       health-queue-name.d.ts
+³   ³       ³       health-queue-name.js
+³   ³       ³       health-queue-name.js.map
+³   ³       ³       health-queue-name.mjs
+³   ³       ³       health-queue-name.mjs.map
+³   ³       ³       image-format.d.mts
+³   ³       ³       image-format.d.ts
+³   ³       ³       image-format.js
+³   ³       ³       image-format.js.map
+³   ³       ³       image-format.mjs
+³   ³       ³       image-format.mjs.map
+³   ³       ³       image-gravity.d.mts
+³   ³       ³       image-gravity.d.ts
+³   ³       ³       image-gravity.js
+³   ³       ³       image-gravity.js.map
+³   ³       ³       image-gravity.mjs
+³   ³       ³       image-gravity.mjs.map
+³   ³       ³       index-status.d.mts
+³   ³       ³       index-status.d.ts
+³   ³       ³       index-status.js
+³   ³       ³       index-status.js.map
+³   ³       ³       index-status.mjs
+³   ³       ³       index-status.mjs.map
+³   ³       ³       message-priority.d.mts
+³   ³       ³       message-priority.d.ts
+³   ³       ³       message-priority.js
+³   ³       ³       message-priority.js.map
+³   ³       ³       message-priority.mjs
+³   ³       ³       message-priority.mjs.map
+³   ³       ³       message-status.d.mts
+³   ³       ³       message-status.d.ts
+³   ³       ³       message-status.js
+³   ³       ³       message-status.js.map
+³   ³       ³       message-status.mjs
+³   ³       ³       message-status.mjs.map
+³   ³       ³       messaging-provider-type.d.mts
+³   ³       ³       messaging-provider-type.d.ts
+³   ³       ³       messaging-provider-type.js
+³   ³       ³       messaging-provider-type.js.map
+³   ³       ³       messaging-provider-type.mjs
+³   ³       ³       messaging-provider-type.mjs.map
+³   ³       ³       o-auth-2-google-prompt.d.mts
+³   ³       ³       o-auth-2-google-prompt.d.ts
+³   ³       ³       o-auth-2-google-prompt.js
+³   ³       ³       o-auth-2-google-prompt.js.map
+³   ³       ³       o-auth-2-google-prompt.mjs
+³   ³       ³       o-auth-2-google-prompt.mjs.map
+³   ³       ³       o-auth-provider.d.mts
+³   ³       ³       o-auth-provider.d.ts
+³   ³       ³       o-auth-provider.js
+³   ³       ³       o-auth-provider.js.map
+³   ³       ³       o-auth-provider.mjs
+³   ³       ³       o-auth-provider.mjs.map
+³   ³       ³       order-by.d.mts
+³   ³       ³       order-by.d.ts
+³   ³       ³       order-by.js
+³   ³       ³       order-by.js.map
+³   ³       ³       order-by.mjs
+³   ³       ³       order-by.mjs.map
+³   ³       ³       organization-key-scopes.d.mts
+³   ³       ³       organization-key-scopes.d.ts
+³   ³       ³       organization-key-scopes.js
+³   ³       ³       organization-key-scopes.js.map
+³   ³       ³       organization-key-scopes.mjs
+³   ³       ³       organization-key-scopes.mjs.map
+³   ³       ³       password-hash.d.mts
+³   ³       ³       password-hash.d.ts
+³   ³       ³       password-hash.js
+³   ³       ³       password-hash.js.map
+³   ³       ³       password-hash.mjs
+³   ³       ³       password-hash.mjs.map
+³   ³       ³       platform-type.d.mts
+³   ³       ³       platform-type.d.ts
+³   ³       ³       platform-type.js
+³   ³       ³       platform-type.js.map
+³   ³       ³       platform-type.mjs
+³   ³       ³       platform-type.mjs.map
+³   ³       ³       project-auth-method-id.d.mts
+³   ³       ³       project-auth-method-id.d.ts
+³   ³       ³       project-auth-method-id.js
+³   ³       ³       project-auth-method-id.js.map
+³   ³       ³       project-auth-method-id.mjs
+³   ³       ³       project-auth-method-id.mjs.map
+³   ³       ³       project-email-template-id.d.mts
+³   ³       ³       project-email-template-id.d.ts
+³   ³       ³       project-email-template-id.js
+³   ³       ³       project-email-template-id.js.map
+³   ³       ³       project-email-template-id.mjs
+³   ³       ³       project-email-template-id.mjs.map
+³   ³       ³       project-email-template-locale.d.mts
+³   ³       ³       project-email-template-locale.d.ts
+³   ³       ³       project-email-template-locale.js
+³   ³       ³       project-email-template-locale.js.map
+³   ³       ³       project-email-template-locale.mjs
+³   ³       ³       project-email-template-locale.mjs.map
+³   ³       ³       project-key-scopes.d.mts
+³   ³       ³       project-key-scopes.d.ts
+³   ³       ³       project-key-scopes.js
+³   ³       ³       project-key-scopes.js.map
+³   ³       ³       project-key-scopes.mjs
+³   ³       ³       project-key-scopes.mjs.map
+³   ³       ³       project-o-auth-2-google-prompt.d.mts
+³   ³       ³       project-o-auth-2-google-prompt.d.ts
+³   ³       ³       project-o-auth-2-google-prompt.js
+³   ³       ³       project-o-auth-2-google-prompt.js.map
+³   ³       ³       project-o-auth-2-google-prompt.mjs
+³   ³       ³       project-o-auth-2-google-prompt.mjs.map
+³   ³       ³       project-o-auth-provider-id.d.mts
+³   ³       ³       project-o-auth-provider-id.d.ts
+³   ³       ³       project-o-auth-provider-id.js
+³   ³       ³       project-o-auth-provider-id.js.map
+³   ³       ³       project-o-auth-provider-id.mjs
+³   ³       ³       project-o-auth-provider-id.mjs.map
+³   ³       ³       project-policy-id.d.mts
+³   ³       ³       project-policy-id.d.ts
+³   ³       ³       project-policy-id.js
+³   ³       ³       project-policy-id.js.map
+³   ³       ³       project-policy-id.mjs
+³   ³       ³       project-policy-id.mjs.map
+³   ³       ³       project-protocol-id.d.mts
+³   ³       ³       project-protocol-id.d.ts
+³   ³       ³       project-protocol-id.js
+³   ³       ³       project-protocol-id.js.map
+³   ³       ³       project-protocol-id.mjs
+³   ³       ³       project-protocol-id.mjs.map
+³   ³       ³       project-service-id.d.mts
+³   ³       ³       project-service-id.d.ts
+³   ³       ³       project-service-id.js
+³   ³       ³       project-service-id.js.map
+³   ³       ³       project-service-id.mjs
+³   ³       ³       project-service-id.mjs.map
+³   ³       ³       project-smtp-secure.d.mts
+³   ³       ³       project-smtp-secure.d.ts
+³   ³       ³       project-smtp-secure.js
+³   ³       ³       project-smtp-secure.js.map
+³   ³       ³       project-smtp-secure.mjs
+³   ³       ³       project-smtp-secure.mjs.map
+³   ³       ³       proxy-resource-type.d.mts
+³   ³       ³       proxy-resource-type.d.ts
+³   ³       ³       proxy-resource-type.js
+³   ³       ³       proxy-resource-type.js.map
+³   ³       ³       proxy-resource-type.mjs
+³   ³       ³       proxy-resource-type.mjs.map
+³   ³       ³       proxy-rule-deployment-resource-type.d.mts
+³   ³       ³       proxy-rule-deployment-resource-type.d.ts
+³   ³       ³       proxy-rule-deployment-resource-type.js
+³   ³       ³       proxy-rule-deployment-resource-type.js.map
+³   ³       ³       proxy-rule-deployment-resource-type.mjs
+³   ³       ³       proxy-rule-deployment-resource-type.mjs.map
+³   ³       ³       proxy-rule-status.d.mts
+³   ³       ³       proxy-rule-status.d.ts
+³   ³       ³       proxy-rule-status.js
+³   ³       ³       proxy-rule-status.js.map
+³   ³       ³       proxy-rule-status.mjs
+³   ³       ³       proxy-rule-status.mjs.map
+³   ³       ³       region.d.mts
+³   ³       ³       region.d.ts
+³   ³       ³       region.js
+³   ³       ³       region.js.map
+³   ³       ³       region.mjs
+³   ³       ³       region.mjs.map
+³   ³       ³       relation-mutate.d.mts
+³   ³       ³       relation-mutate.d.ts
+³   ³       ³       relation-mutate.js
+³   ³       ³       relation-mutate.js.map
+³   ³       ³       relation-mutate.mjs
+³   ³       ³       relation-mutate.mjs.map
+³   ³       ³       relationship-type.d.mts
+³   ³       ³       relationship-type.d.ts
+³   ³       ³       relationship-type.js
+³   ³       ³       relationship-type.js.map
+³   ³       ³       relationship-type.mjs
+³   ³       ³       relationship-type.mjs.map
+³   ³       ³       runtime.d.mts
+³   ³       ³       runtime.d.ts
+³   ³       ³       runtime.js
+³   ³       ³       runtime.js.map
+³   ³       ³       runtime.mjs
+³   ³       ³       runtime.mjs.map
+³   ³       ³       smtp-encryption.d.mts
+³   ³       ³       smtp-encryption.d.ts
+³   ³       ³       smtp-encryption.js
+³   ³       ³       smtp-encryption.js.map
+³   ³       ³       smtp-encryption.mjs
+³   ³       ³       smtp-encryption.mjs.map
+³   ³       ³       status-code.d.mts
+³   ³       ³       status-code.d.ts
+³   ³       ³       status-code.js
+³   ³       ³       status-code.js.map
+³   ³       ³       status-code.mjs
+³   ³       ³       status-code.mjs.map
+³   ³       ³       tables-db-index-type.d.mts
+³   ³       ³       tables-db-index-type.d.ts
+³   ³       ³       tables-db-index-type.js
+³   ³       ³       tables-db-index-type.js.map
+³   ³       ³       tables-db-index-type.mjs
+³   ³       ³       tables-db-index-type.mjs.map
+³   ³       ³       template-reference-type.d.mts
+³   ³       ³       template-reference-type.d.ts
+³   ³       ³       template-reference-type.js
+³   ³       ³       template-reference-type.js.map
+³   ³       ³       template-reference-type.mjs
+³   ³       ³       template-reference-type.mjs.map
+³   ³       ³       timezone.d.mts
+³   ³       ³       timezone.d.ts
+³   ³       ³       timezone.js
+³   ³       ³       timezone.js.map
+³   ³       ³       timezone.mjs
+³   ³       ³       timezone.mjs.map
+³   ³       ³       vcs-reference-type.d.mts
+³   ³       ³       vcs-reference-type.d.ts
+³   ³       ³       vcs-reference-type.js
+³   ³       ³       vcs-reference-type.js.map
+³   ³       ³       vcs-reference-type.mjs
+³   ³       ³       vcs-reference-type.mjs.map
+³   ³       ³       
+³   ³       ÀÄÄÄservices
+³   ³               account.d.mts
+³   ³               account.d.ts
+³   ³               account.js
+³   ³               account.js.map
+³   ³               account.mjs
+³   ³               account.mjs.map
+³   ³               activities.d.mts
+³   ³               activities.d.ts
+³   ³               activities.js
+³   ³               activities.js.map
+³   ³               activities.mjs
+³   ³               activities.mjs.map
+³   ³               advisor.d.mts
+³   ³               advisor.d.ts
+³   ³               advisor.js
+³   ³               advisor.js.map
+³   ³               advisor.mjs
+³   ³               advisor.mjs.map
+³   ³               avatars.d.mts
+³   ³               avatars.d.ts
+³   ³               avatars.js
+³   ³               avatars.js.map
+³   ³               avatars.mjs
+³   ³               avatars.mjs.map
+³   ³               backups.d.mts
+³   ³               backups.d.ts
+³   ³               backups.js
+³   ³               backups.js.map
+³   ³               backups.mjs
+³   ³               backups.mjs.map
+³   ³               databases.d.mts
+³   ³               databases.d.ts
+³   ³               databases.js
+³   ³               databases.js.map
+³   ³               databases.mjs
+³   ³               databases.mjs.map
+³   ³               functions.d.mts
+³   ³               functions.d.ts
+³   ³               functions.js
+³   ³               functions.js.map
+³   ³               functions.mjs
+³   ³               functions.mjs.map
+³   ³               graphql.d.mts
+³   ³               graphql.d.ts
+³   ³               graphql.js
+³   ³               graphql.js.map
+³   ³               graphql.mjs
+³   ³               graphql.mjs.map
+³   ³               health.d.mts
+³   ³               health.d.ts
+³   ³               health.js
+³   ³               health.js.map
+³   ³               health.mjs
+³   ³               health.mjs.map
+³   ³               locale.d.mts
+³   ³               locale.d.ts
+³   ³               locale.js
+³   ³               locale.js.map
+³   ³               locale.mjs
+³   ³               locale.mjs.map
+³   ³               messaging.d.mts
+³   ³               messaging.d.ts
+³   ³               messaging.js
+³   ³               messaging.js.map
+³   ³               messaging.mjs
+³   ³               messaging.mjs.map
+³   ³               organization.d.mts
+³   ³               organization.d.ts
+³   ³               organization.js
+³   ³               organization.js.map
+³   ³               organization.mjs
+³   ³               organization.mjs.map
+³   ³               presences.d.mts
+³   ³               presences.d.ts
+³   ³               presences.js
+³   ³               presences.js.map
+³   ³               presences.mjs
+³   ³               presences.mjs.map
+³   ³               project.d.mts
+³   ³               project.d.ts
+³   ³               project.js
+³   ³               project.js.map
+³   ³               project.mjs
+³   ³               project.mjs.map
+³   ³               proxy.d.mts
+³   ³               proxy.d.ts
+³   ³               proxy.js
+³   ³               proxy.js.map
+³   ³               proxy.mjs
+³   ³               proxy.mjs.map
+³   ³               sites.d.mts
+³   ³               sites.d.ts
+³   ³               sites.js
+³   ³               sites.js.map
+³   ³               sites.mjs
+³   ³               sites.mjs.map
+³   ³               storage.d.mts
+³   ³               storage.d.ts
+³   ³               storage.js
+³   ³               storage.js.map
+³   ³               storage.mjs
+³   ³               storage.mjs.map
+³   ³               tables-db.d.mts
+³   ³               tables-db.d.ts
+³   ³               tables-db.js
+³   ³               tables-db.js.map
+³   ³               tables-db.mjs
+³   ³               tables-db.mjs.map
+³   ³               teams.d.mts
+³   ³               teams.d.ts
+³   ³               teams.js
+³   ³               teams.js.map
+³   ³               teams.mjs
+³   ³               teams.mjs.map
+³   ³               tokens.d.mts
+³   ³               tokens.d.ts
+³   ³               tokens.js
+³   ³               tokens.js.map
+³   ³               tokens.mjs
+³   ³               tokens.mjs.map
+³   ³               usage.d.mts
+³   ³               usage.d.ts
+³   ³               usage.js
+³   ³               usage.js.map
+³   ³               usage.mjs
+³   ³               usage.mjs.map
+³   ³               users.d.mts
+³   ³               users.d.ts
+³   ³               users.js
+³   ³               users.js.map
+³   ³               users.mjs
+³   ³               users.mjs.map
+³   ³               webhooks.d.mts
+³   ³               webhooks.d.ts
+³   ³               webhooks.js
+³   ³               webhooks.js.map
+³   ³               webhooks.mjs
+³   ³               webhooks.mjs.map
+³   ³               
+³   ÃÄÄÄpicocolors
+³   ³       LICENSE
+³   ³       package.json
+³   ³       picocolors.browser.js
+³   ³       picocolors.d.ts
+³   ³       picocolors.js
+³   ³       README.md
+³   ³       types.d.ts
+³   ³       
+³   ÃÄÄÄpinia
+³   ³   ³   index.cjs
+³   ³   ³   index.js
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÀÄÄÄdist
+³   ³           pinia.cjs
+³   ³           pinia.d.ts
+³   ³           pinia.esm-browser.js
+³   ³           pinia.iife.js
+³   ³           pinia.iife.prod.js
+³   ³           pinia.mjs
+³   ³           pinia.prod.cjs
+³   ³           
+³   ÃÄÄÄpostcss
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÀÄÄÄlib
+³   ³           at-rule.d.ts
+³   ³           at-rule.js
+³   ³           comment.d.ts
+³   ³           comment.js
+³   ³           container.d.ts
+³   ³           container.js
+³   ³           css-syntax-error.d.ts
+³   ³           css-syntax-error.js
+³   ³           declaration.d.ts
+³   ³           declaration.js
+³   ³           document.d.ts
+³   ³           document.js
+³   ³           fromJSON.d.ts
+³   ³           fromJSON.js
+³   ³           input.d.ts
+³   ³           input.js
+³   ³           lazy-result.d.ts
+³   ³           lazy-result.js
+³   ³           list.d.ts
+³   ³           list.js
+³   ³           map-generator.js
+³   ³           no-work-result.d.ts
+³   ³           no-work-result.js
+³   ³           node.d.ts
+³   ³           node.js
+³   ³           parse.d.ts
+³   ³           parse.js
+³   ³           parser.js
+³   ³           postcss.d.mts
+³   ³           postcss.d.ts
+³   ³           postcss.js
+³   ³           postcss.mjs
+³   ³           previous-map.d.ts
+³   ³           previous-map.js
+³   ³           processor.d.ts
+³   ³           processor.js
+³   ³           result.d.ts
+³   ³           result.js
+³   ³           root.d.ts
+³   ³           root.js
+³   ³           rule.d.ts
+³   ³           rule.js
+³   ³           stringifier.d.ts
+³   ³           stringifier.js
+³   ³           stringify.d.ts
+³   ³           stringify.js
+³   ³           symbols.js
+³   ³           terminal-highlight.js
+³   ³           tokenize.js
+³   ³           warn-once.js
+³   ³           warning.d.ts
+³   ³           warning.js
+³   ³           
+³   ÃÄÄÄrollup
+³   ³   ³   LICENSE.md
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÀÄÄÄdist
+³   ³       ³   getLogFilter.d.ts
+³   ³       ³   getLogFilter.js
+³   ³       ³   loadConfigFile.d.ts
+³   ³       ³   loadConfigFile.js
+³   ³       ³   native.js
+³   ³       ³   parseAst.d.ts
+³   ³       ³   parseAst.js
+³   ³       ³   rollup.d.ts
+³   ³       ³   rollup.js
+³   ³       ³   
+³   ³       ÃÄÄÄbin
+³   ³       ³       rollup
+³   ³       ³       
+³   ³       ÃÄÄÄes
+³   ³       ³   ³   getLogFilter.js
+³   ³       ³   ³   package.json
+³   ³       ³   ³   parseAst.js
+³   ³       ³   ³   rollup.js
+³   ³       ³   ³   
+³   ³       ³   ÀÄÄÄshared
+³   ³       ³           node-entry.js
+³   ³       ³           parseAst.js
+³   ³       ³           watch.js
+³   ³       ³           
+³   ³       ÀÄÄÄshared
+³   ³               fsevents-importer.js
+³   ³               index.js
+³   ³               loadConfigFile.js
+³   ³               parseAst.js
+³   ³               rollup.js
+³   ³               watch-cli.js
+³   ³               watch.js
+³   ³               
+³   ÃÄÄÄsource-map-js
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   source-map.d.ts
+³   ³   ³   source-map.js
+³   ³   ³   
+³   ³   ÀÄÄÄlib
+³   ³           array-set.js
+³   ³           base64-vlq.js
+³   ³           base64.js
+³   ³           binary-search.js
+³   ³           mapping-list.js
+³   ³           quick-sort.js
+³   ³           source-map-consumer.d.ts
+³   ³           source-map-consumer.js
+³   ³           source-map-generator.d.ts
+³   ³           source-map-generator.js
+³   ³           source-node.d.ts
+³   ³           source-node.js
+³   ³           util.js
+³   ³           
+³   ÃÄÄÄundici
+³   ³   ³   index-fetch.js
+³   ³   ³   index.d.ts
+³   ³   ³   index.js
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÃÄÄÄdocs
+³   ³   ³   ÀÄÄÄdocs
+³   ³   ³       ÃÄÄÄapi
+³   ³   ³       ³       Agent.md
+³   ³   ³       ³       api-lifecycle.md
+³   ³   ³       ³       BalancedPool.md
+³   ³   ³       ³       CacheStorage.md
+³   ³   ³       ³       Client.md
+³   ³   ³       ³       Connector.md
+³   ³   ³       ³       ContentType.md
+³   ³   ³       ³       Cookies.md
+³   ³   ³       ³       Debug.md
+³   ³   ³       ³       DiagnosticsChannel.md
+³   ³   ³       ³       Dispatcher.md
+³   ³   ³       ³       DispatchInterceptor.md
+³   ³   ³       ³       EnvHttpProxyAgent.md
+³   ³   ³       ³       Errors.md
+³   ³   ³       ³       EventSource.md
+³   ³   ³       ³       Fetch.md
+³   ³   ³       ³       MockAgent.md
+³   ³   ³       ³       MockClient.md
+³   ³   ³       ³       MockErrors.md
+³   ³   ³       ³       MockPool.md
+³   ³   ³       ³       Pool.md
+³   ³   ³       ³       PoolStats.md
+³   ³   ³       ³       ProxyAgent.md
+³   ³   ³       ³       RedirectHandler.md
+³   ³   ³       ³       RetryAgent.md
+³   ³   ³       ³       RetryHandler.md
+³   ³   ³       ³       Util.md
+³   ³   ³       ³       WebSocket.md
+³   ³   ³       ³       
+³   ³   ³       ÀÄÄÄbest-practices
+³   ³   ³               client-certificate.md
+³   ³   ³               mocking-request.md
+³   ³   ³               proxy.md
+³   ³   ³               writing-tests.md
+³   ³   ³               
+³   ³   ÃÄÄÄlib
+³   ³   ³   ³   global.js
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄapi
+³   ³   ³   ³       abort-signal.js
+³   ³   ³   ³       api-connect.js
+³   ³   ³   ³       api-pipeline.js
+³   ³   ³   ³       api-request.js
+³   ³   ³   ³       api-stream.js
+³   ³   ³   ³       api-upgrade.js
+³   ³   ³   ³       index.js
+³   ³   ³   ³       readable.js
+³   ³   ³   ³       util.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄcore
+³   ³   ³   ³       connect.js
+³   ³   ³   ³       constants.js
+³   ³   ³   ³       diagnostics.js
+³   ³   ³   ³       errors.js
+³   ³   ³   ³       request.js
+³   ³   ³   ³       symbols.js
+³   ³   ³   ³       tree.js
+³   ³   ³   ³       util.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄdispatcher
+³   ³   ³   ³       agent.js
+³   ³   ³   ³       balanced-pool.js
+³   ³   ³   ³       client-h1.js
+³   ³   ³   ³       client-h2.js
+³   ³   ³   ³       client.js
+³   ³   ³   ³       dispatcher-base.js
+³   ³   ³   ³       dispatcher.js
+³   ³   ³   ³       env-http-proxy-agent.js
+³   ³   ³   ³       fixed-queue.js
+³   ³   ³   ³       pool-base.js
+³   ³   ³   ³       pool-stats.js
+³   ³   ³   ³       pool.js
+³   ³   ³   ³       proxy-agent.js
+³   ³   ³   ³       retry-agent.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄhandler
+³   ³   ³   ³       decorator-handler.js
+³   ³   ³   ³       redirect-handler.js
+³   ³   ³   ³       retry-handler.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄinterceptor
+³   ³   ³   ³       dns.js
+³   ³   ³   ³       dump.js
+³   ³   ³   ³       redirect-interceptor.js
+³   ³   ³   ³       redirect.js
+³   ³   ³   ³       response-error.js
+³   ³   ³   ³       retry.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄllhttp
+³   ³   ³   ³       .gitkeep
+³   ³   ³   ³       constants.js
+³   ³   ³   ³       llhttp-wasm.js
+³   ³   ³   ³       llhttp_simd-wasm.js
+³   ³   ³   ³       utils.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄmock
+³   ³   ³   ³       mock-agent.js
+³   ³   ³   ³       mock-client.js
+³   ³   ³   ³       mock-errors.js
+³   ³   ³   ³       mock-interceptor.js
+³   ³   ³   ³       mock-pool.js
+³   ³   ³   ³       mock-symbols.js
+³   ³   ³   ³       mock-utils.js
+³   ³   ³   ³       pending-interceptors-formatter.js
+³   ³   ³   ³       pluralizer.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄutil
+³   ³   ³   ³       timers.js
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄweb
+³   ³   ³       ÃÄÄÄcache
+³   ³   ³       ³       cache.js
+³   ³   ³       ³       cachestorage.js
+³   ³   ³       ³       symbols.js
+³   ³   ³       ³       util.js
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄcookies
+³   ³   ³       ³       constants.js
+³   ³   ³       ³       index.js
+³   ³   ³       ³       parse.js
+³   ³   ³       ³       util.js
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄeventsource
+³   ³   ³       ³       eventsource-stream.js
+³   ³   ³       ³       eventsource.js
+³   ³   ³       ³       util.js
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄfetch
+³   ³   ³       ³       body.js
+³   ³   ³       ³       constants.js
+³   ³   ³       ³       data-url.js
+³   ³   ³       ³       dispatcher-weakref.js
+³   ³   ³       ³       file.js
+³   ³   ³       ³       formdata-parser.js
+³   ³   ³       ³       formdata.js
+³   ³   ³       ³       global.js
+³   ³   ³       ³       headers.js
+³   ³   ³       ³       index.js
+³   ³   ³       ³       LICENSE
+³   ³   ³       ³       request.js
+³   ³   ³       ³       response.js
+³   ³   ³       ³       symbols.js
+³   ³   ³       ³       util.js
+³   ³   ³       ³       webidl.js
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄfileapi
+³   ³   ³       ³       encoding.js
+³   ³   ³       ³       filereader.js
+³   ³   ³       ³       progressevent.js
+³   ³   ³       ³       symbols.js
+³   ³   ³       ³       util.js
+³   ³   ³       ³       
+³   ³   ³       ÀÄÄÄwebsocket
+³   ³   ³               connection.js
+³   ³   ³               constants.js
+³   ³   ³               events.js
+³   ³   ³               frame.js
+³   ³   ³               permessage-deflate.js
+³   ³   ³               receiver.js
+³   ³   ³               sender.js
+³   ³   ³               symbols.js
+³   ³   ³               util.js
+³   ³   ³               websocket.js
+³   ³   ³               
+³   ³   ÃÄÄÄscripts
+³   ³   ³       strip-comments.js
+³   ³   ³       
+³   ³   ÀÄÄÄtypes
+³   ³           agent.d.ts
+³   ³           api.d.ts
+³   ³           balanced-pool.d.ts
+³   ³           cache.d.ts
+³   ³           client.d.ts
+³   ³           connector.d.ts
+³   ³           content-type.d.ts
+³   ³           cookies.d.ts
+³   ³           diagnostics-channel.d.ts
+³   ³           dispatcher.d.ts
+³   ³           env-http-proxy-agent.d.ts
+³   ³           errors.d.ts
+³   ³           eventsource.d.ts
+³   ³           fetch.d.ts
+³   ³           file.d.ts
+³   ³           filereader.d.ts
+³   ³           formdata.d.ts
+³   ³           global-dispatcher.d.ts
+³   ³           global-origin.d.ts
+³   ³           handlers.d.ts
+³   ³           header.d.ts
+³   ³           index.d.ts
+³   ³           interceptors.d.ts
+³   ³           mock-agent.d.ts
+³   ³           mock-client.d.ts
+³   ³           mock-errors.d.ts
+³   ³           mock-interceptor.d.ts
+³   ³           mock-pool.d.ts
+³   ³           patch.d.ts
+³   ³           pool-stats.d.ts
+³   ³           pool.d.ts
+³   ³           proxy-agent.d.ts
+³   ³           readable.d.ts
+³   ³           README.md
+³   ³           retry-agent.d.ts
+³   ³           retry-handler.d.ts
+³   ³           util.d.ts
+³   ³           webidl.d.ts
+³   ³           websocket.d.ts
+³   ³           
+³   ÃÄÄÄvite
+³   ³   ³   client.d.ts
+³   ³   ³   index.cjs
+³   ³   ³   index.d.cts
+³   ³   ³   LICENSE.md
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÃÄÄÄbin
+³   ³   ³       openChrome.applescript
+³   ³   ³       vite.js
+³   ³   ³       
+³   ³   ÃÄÄÄdist
+³   ³   ³   ÃÄÄÄclient
+³   ³   ³   ³       client.mjs
+³   ³   ³   ³       env.mjs
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄnode
+³   ³   ³   ³   ³   cli.js
+³   ³   ³   ³   ³   constants.js
+³   ³   ³   ³   ³   index.d.ts
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   runtime.d.ts
+³   ³   ³   ³   ³   runtime.js
+³   ³   ³   ³   ³   types.d-aGj9QkWt.d.ts
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄchunks
+³   ³   ³   ³           dep-BB45zftN.js
+³   ³   ³   ³           dep-BK3b2jBa.js
+³   ³   ³   ³           dep-D-7KCb9p.js
+³   ³   ³   ³           dep-Dnp7gl8U.js
+³   ³   ³   ³           dep-IQS-Za7F.js
+³   ³   ³   ³           
+³   ³   ³   ÀÄÄÄnode-cjs
+³   ³   ³           publicUtils.cjs
+³   ³   ³           
+³   ³   ÀÄÄÄtypes
+³   ³           customEvent.d.ts
+³   ³           hmrPayload.d.ts
+³   ³           hot.d.ts
+³   ³           import-meta.d.ts
+³   ³           importGlob.d.ts
+³   ³           importMeta.d.ts
+³   ³           metadata.d.ts
+³   ³           package.json
+³   ³           
+³   ÃÄÄÄvue
+³   ³   ³   index.js
+³   ³   ³   index.mjs
+³   ³   ³   jsx.d.ts
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÃÄÄÄcompiler-sfc
+³   ³   ³       index.browser.js
+³   ³   ³       index.browser.mjs
+³   ³   ³       index.d.mts
+³   ³   ³       index.d.ts
+³   ³   ³       index.js
+³   ³   ³       index.mjs
+³   ³   ³       package.json
+³   ³   ³       register-ts.js
+³   ³   ³       
+³   ³   ÃÄÄÄdist
+³   ³   ³       vue.cjs.js
+³   ³   ³       vue.cjs.prod.js
+³   ³   ³       vue.d.mts
+³   ³   ³       vue.d.ts
+³   ³   ³       vue.esm-browser.js
+³   ³   ³       vue.esm-browser.prod.js
+³   ³   ³       vue.esm-bundler.js
+³   ³   ³       vue.global.js
+³   ³   ³       vue.global.prod.js
+³   ³   ³       vue.runtime.esm-browser.js
+³   ³   ³       vue.runtime.esm-browser.prod.js
+³   ³   ³       vue.runtime.esm-bundler.js
+³   ³   ³       vue.runtime.global.js
+³   ³   ³       vue.runtime.global.prod.js
+³   ³   ³       
+³   ³   ÃÄÄÄjsx-runtime
+³   ³   ³       index.d.ts
+³   ³   ³       index.js
+³   ³   ³       index.mjs
+³   ³   ³       package.json
+³   ³   ³       
+³   ³   ÀÄÄÄserver-renderer
+³   ³           index.d.mts
+³   ³           index.d.ts
+³   ³           index.js
+³   ³           index.mjs
+³   ³           package.json
+³   ³           
+³   ÃÄÄÄvue-demi
+³   ³   ³   LICENSE
+³   ³   ³   package.json
+³   ³   ³   README.md
+³   ³   ³   
+³   ³   ÃÄÄÄbin
+³   ³   ³       vue-demi-fix.js
+³   ³   ³       vue-demi-switch.js
+³   ³   ³       
+³   ³   ÃÄÄÄlib
+³   ³   ³   ³   index.cjs
+³   ³   ³   ³   index.d.ts
+³   ³   ³   ³   index.iife.js
+³   ³   ³   ³   index.mjs
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄv2
+³   ³   ³   ³       index.cjs
+³   ³   ³   ³       index.d.ts
+³   ³   ³   ³       index.mjs
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄv2.7
+³   ³   ³   ³       index.cjs
+³   ³   ³   ³       index.d.ts
+³   ³   ³   ³       index.mjs
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄv3
+³   ³   ³           index.cjs
+³   ³   ³           index.d.ts
+³   ³   ³           index.mjs
+³   ³   ³           
+³   ³   ÀÄÄÄscripts
+³   ³           postinstall.js
+³   ³           switch-cli.js
+³   ³           utils.js
+³   ³           
+³   ÀÄÄÄvue-router
+³       ³   index.js
+³       ³   LICENSE
+³       ³   package.json
+³       ³   vue-router-auto-resolver.d.mts
+³       ³   vue-router-auto-routes.d.ts
+³       ³   vue-router-auto.d.ts
+³       ³   vue-router.node.mjs
+³       ³   
+³       ÃÄÄÄdist
+³       ³   ³   devtools-EWN81iOl.mjs
+³       ³   ³   router-CWoNjPRp.d.mts
+³       ³   ³   vue-router.cjs
+³       ³   ³   vue-router.d.mts
+³       ³   ³   vue-router.esm-browser.js
+³       ³   ³   vue-router.esm-browser.prod.js
+³       ³   ³   vue-router.esm-bundler.js
+³       ³   ³   vue-router.global.js
+³       ³   ³   vue-router.global.prod.js
+³       ³   ³   vue-router.mjs
+³       ³   ³   vue-router.prod.cjs
+³       ³   ³   
+³       ³   ÀÄÄÄexperimental
+³       ³           index.d.mts
+³       ³           index.mjs
+³       ³           
+³       ÀÄÄÄvetur
+³               attributes.json
+³               tags.json
+³               
+ÃÄÄÄpublic
+³       default-avatar.svg
+³       favicon.svg
+³       
+ÃÄÄÄsrc
+³   ³   App.vue
+³   ³   main.js
+³   ³   
+³   ÃÄÄÄcomponents
+³   ³       CommentItem.vue
+³   ³       VideoCard.vue
+³   ³       VideoReel.vue
+³   ³       
+³   ÃÄÄÄconfig
+³   ³       appwrite.js
+³   ³       cloudinary.js
+³   ³       
+³   ÃÄÄÄpages
+³   ³   ³   Conversation.vue
+³   ³   ³   Home.vue
+³   ³   ³   Messages.vue
+³   ³   ³   NotFound.vue
+³   ³   ³   Notifications.vue
+³   ³   ³   Profile.vue
+³   ³   ³   Search.vue
+³   ³   ³   Settings.vue
+³   ³   ³   Upload.vue
+³   ³   ³   VideoDetail.vue
+³   ³   ³   
+³   ³   ÀÄÄÄauth
+³   ³           Login.vue
+³   ³           Register.vue
+³   ³           
+³   ÃÄÄÄrouter
+³   ³       index.js
+³   ³       
+³   ÃÄÄÄservices
+³   ³       admin.js
+³   ³       auth.js
+³   ³       comments.js
+³   ³       feed.js
+³   ³       media.js
+³   ³       messaging.js
+³   ³       notifications.js
+³   ³       social.js
+³   ³       users.js
+³   ³       videos.js
+³   ³       
+³   ÃÄÄÄstores
+³   ³       auth.js
+³   ³       feed.js
+³   ³       
+³   ÀÄÄÄstyles
+³           main.css
+³           
+ÀÄÄÄ{src
+    ÀÄÄÄ{pages
+        ÀÄÄÄ{auth},components,services,stores,router,utils,config,styles},appwrite
+            ÀÄÄÄ{schema,setup},docs,public}
