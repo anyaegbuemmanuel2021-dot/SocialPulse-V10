@@ -7,7 +7,9 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview --host",
-    "setup": "node appwrite/setup/setup-collections.js"
+    "setup": "node appwrite/setup/setup-collections.js",
+    "setup:cjs": "node --dns-result-order=ipv4first appwrite/setup/setup-collections.cjs",
+    "setup:cjs": "node appwrite/setup/setup-collections.cjs"
   },
   "dependencies": {
     "appwrite": "^26.1.0",
