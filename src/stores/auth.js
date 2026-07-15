@@ -13,6 +13,12 @@ export const useAuthStore = defineStore('auth', () => {
 
   const isAuthenticated = computed(() => !!user.value)
   const userId          = computed(() => user.value?.$id || null)
+  // The real access-control boundary is the Appwrite `admin` LABEL on the
+  // account (enforced server-side via Permission.update/delete(Role.label
+  // ('admin')) on every collection — see appwrite/schema/collections.js).
+  // This computed just exposes it for router guards / UI gating; it is not
+  // itself a security mechanism.
+  const isAdmin          = computed(() => (user.value?.labels || []).includes('admin'))
 
   async function init () {
     loading.value = true
@@ -62,7 +68,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   return {
     user, profile, loading, error,
-    isAuthenticated, userId,
+    isAuthenticated, userId, isAdmin,
     init, doRegister, doLogin, doLogout, updateProfile, clearError
   }
 })

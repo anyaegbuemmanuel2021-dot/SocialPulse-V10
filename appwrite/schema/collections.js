@@ -23,6 +23,7 @@ export const COL = {
   REPORTS:        'reports',
   BLOCKED_USERS:  'blocked_users',
   ADMIN_LOGS:     'admin_logs',
+  SITE_FLAGS:     'site_flags',
 }
 
 // ── Bucket IDs (legacy) ─────────────────────────────────────────────────────
@@ -43,7 +44,11 @@ export const SCHEMAS = {
 
   [COL.USERS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'user_id',         type: 'string',   required: true,  size: 36   },
       { key: 'email',           type: 'string',   required: true,  size: 255  },
@@ -56,6 +61,7 @@ export const SCHEMAS = {
       { key: 'cover_public_id',   type: 'string',   required: false, size: 255  },
       { key: 'website',         type: 'string',   required: false, size: 500  },
       { key: 'verified',        type: 'boolean',  required: false },
+      { key: 'is_admin',        type: 'boolean',  required: false },
       { key: 'is_private',      type: 'boolean',  required: false },
       { key: 'is_disabled',     type: 'boolean',  required: false },
       { key: 'is_suspended',    type: 'boolean',  required: false },
@@ -80,7 +86,11 @@ export const SCHEMAS = {
 
   [COL.VIDEOS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'user_id',       type: 'string',   required: true,  size: 36   },
       { key: 'title',         type: 'string',   required: true,  size: 255  },
@@ -117,7 +127,11 @@ export const SCHEMAS = {
 
   [COL.COMMENTS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'video_id',          type: 'string',   required: true,  size: 36   },
       { key: 'user_id',           type: 'string',   required: true,  size: 36   },
@@ -139,7 +153,11 @@ export const SCHEMAS = {
 
   [COL.LIKES]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'user_id',    type: 'string',   required: true,  size: 36 },
       { key: 'video_id',   type: 'string',   required: false, size: 36 },
@@ -157,7 +175,11 @@ export const SCHEMAS = {
 
   [COL.FOLLOWS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'follower_id',  type: 'string',   required: true, size: 36 },
       { key: 'following_id', type: 'string',   required: true, size: 36 },
@@ -171,7 +193,11 @@ export const SCHEMAS = {
 
   [COL.SAVES]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'user_id',    type: 'string',   required: true, size: 36 },
       { key: 'video_id',   type: 'string',   required: true, size: 36 },
@@ -185,7 +211,11 @@ export const SCHEMAS = {
 
   [COL.NOTIFICATIONS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'user_id',           type: 'string',   required: true,  size: 36  },
       { key: 'actor_id',          type: 'string',   required: true,  size: 36  },
@@ -205,7 +235,11 @@ export const SCHEMAS = {
 
   [COL.CONVERSATIONS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'participant_ids',  type: 'string',   required: true,  size: 36, array: true },
       { key: 'last_message_id',  type: 'string',   required: false, size: 36  },
@@ -220,7 +254,11 @@ export const SCHEMAS = {
 
   [COL.MESSAGES]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'conversation_id', type: 'string',   required: true,  size: 36   },
       { key: 'sender_id',       type: 'string',   required: true,  size: 36   },
@@ -242,7 +280,11 @@ export const SCHEMAS = {
 
   [COL.VIDEO_VIEWS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'video_id',      type: 'string',   required: true,  size: 36 },
       { key: 'user_id',       type: 'string',   required: false, size: 36 },
@@ -258,10 +300,15 @@ export const SCHEMAS = {
 
   [COL.HASHTAGS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'tag',         type: 'string',   required: true, size: 100 },
       { key: 'usage_count', type: 'integer',  required: false },
+      { key: 'is_blocked',  type: 'boolean',  required: false },
       { key: 'created_at',  type: 'datetime', required: true  },
       { key: 'updated_at',  type: 'datetime', required: false },
     ],
@@ -273,7 +320,11 @@ export const SCHEMAS = {
 
   [COL.REPORTS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'reporter_id',        type: 'string',   required: true,  size: 36   },
       { key: 'reported_user_id',   type: 'string',   required: false, size: 36   },
@@ -295,7 +346,11 @@ export const SCHEMAS = {
 
   [COL.BLOCKED_USERS]: {
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'blocker_id',  type: 'string',   required: true, size: 36 },
       { key: 'blocked_id',  type: 'string',   required: true, size: 36 },
@@ -311,7 +366,11 @@ export const SCHEMAS = {
     // TODO: once an admin team/label exists, replace Role.users() with
     // Permission.create(Role.team('admins')) so only admins can write logs.
     documentSecurity: true,
-    permissions: [Permission.create(Role.users())],
+    permissions: [
+      Permission.create(Role.users()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
     attributes: [
       { key: 'admin_id',      type: 'string',   required: true,  size: 36   },
       { key: 'action',        type: 'string',   required: true,  size: 100  },
@@ -324,6 +383,34 @@ export const SCHEMAS = {
       { key: 'idx_admin',   type: 'key', attributes: ['admin_id']   },
       { key: 'idx_action',  type: 'key', attributes: ['action']     },
       { key: 'idx_created', type: 'key', attributes: ['created_at'] },
+    ],
+  },
+
+  [COL.SITE_FLAGS]: {
+    // Feature kill-switches. No per-document ownership here — every flag is
+    // platform-wide, so documentSecurity is off and permissions apply
+    // uniformly at the collection level: anyone can READ (the app needs to
+    // check flags even for logged-out visitors, e.g. is registration open),
+    // but only an admin-labeled account can UPDATE. Flags themselves are
+    // seeded once by the deployment script (which uses the server API key
+    // and bypasses permissions entirely), not created by users, so there's
+    // deliberately no create permission for regular users here.
+    documentSecurity: false,
+    permissions: [
+      Permission.read(Role.any()),
+      Permission.update(Role.label('admin')),
+      Permission.delete(Role.label('admin')),
+    ],
+    attributes: [
+      { key: 'key',         type: 'string',   required: true,  size: 100  },
+      { key: 'label',       type: 'string',   required: true,  size: 100  },
+      { key: 'enabled',     type: 'boolean',  required: false                },
+      { key: 'message',     type: 'string',   required: false, size: 1000 },
+      { key: 'updated_by',  type: 'string',   required: false, size: 36   },
+      { key: 'updated_at',  type: 'datetime', required: false                },
+    ],
+    indexes: [
+      { key: 'idx_key', type: 'unique', attributes: ['key'] },
     ],
   },
 }

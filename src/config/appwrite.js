@@ -69,6 +69,7 @@ export const C = {
   REPORTS:        clean(import.meta.env.VITE_APPWRITE_REPORTS_COLLECTION)        || 'reports',
   BLOCKED_USERS:  clean(import.meta.env.VITE_APPWRITE_BLOCKED_USERS_COLLECTION)  || 'blocked_users',
   ADMIN_LOGS:     clean(import.meta.env.VITE_APPWRITE_ADMIN_LOGS_COLLECTION)     || 'admin_logs',
+  SITE_FLAGS:     clean(import.meta.env.VITE_APPWRITE_SITE_FLAGS_COLLECTION)     || 'site_flags',
 }
 
 // ---------------------------------------------------------------------------

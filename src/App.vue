@@ -1,5 +1,14 @@
 <template>
-  <div class="app-shell" :class="{ 'home-feed-mode': isHome }">
+  <div v-if="siteDisabled" class="maintenance-screen">
+    <div class="maintenance-card">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 9v4M12 17h.01M10.29 3.86l-8.18 14.18A2 2 0 0 0 4 21h16a2 2 0 0 0 1.89-2.96L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+      </svg>
+      <h1>We'll be right back</h1>
+      <p>{{ siteMessage }}</p>
+    </div>
+  </div>
+  <div v-else class="app-shell" :class="{ 'home-feed-mode': isHome }">
     <!-- Top Navigation -->
     <header class="top-nav" v-if="!isAuthPage">
       <router-link to="/" class="nav-logo">SocialPulse</router-link>
@@ -108,6 +117,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { getUnreadCount } from '@/services/notifications'
 import { getUnreadMessageCount } from '@/services/messaging'
+import { checkFeature } from '@/services/siteFlags'
 
 const auth   = useAuthStore()
 const route  = useRoute()
@@ -116,6 +126,8 @@ const router = useRouter()
 const searchQ        = ref('')
 const unreadNotifs   = ref(0)
 const unreadMessages = ref(0)
+const siteDisabled   = ref(false)
+const siteMessage    = ref('')
 
 const isAuthPage = computed(() => ['login', 'register'].includes(route.name))
 const isHome      = computed(() => route.name === 'home')
@@ -125,10 +137,27 @@ const goSearch = () => {
 }
 
 onMounted(async () => {
+  // Check the global kill-switch first — if the whole site is disabled,
+  // there's no point initializing auth/notifications/etc. Fails open (see
+  // siteFlags.js) so a missing/misconfigured flag never accidentally locks
+  // everyone out.
+  try {
+    const gate = await checkFeature('site')
+    if (!gate.enabled) {
+      siteDisabled.value = true
+      siteMessage.value = gate.message || 'The site is temporarily unavailable.'
+      return
+    }
+  } catch {
+    // If the flag check itself fails (e.g. offline), don't block the app —
+    // fail open rather than showing a false maintenance screen.
+  }
+
   await auth.init()
   if (auth.isAuthenticated) {
     unreadNotifs.value   = await getUnreadCount(auth.userId)
     unreadMessages.value = await getUnreadMessageCount(auth.userId)
   }
 })
+
 </script>

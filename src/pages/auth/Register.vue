@@ -14,7 +14,14 @@
 
       <div v-if="auth.error" class="error-banner mt-2">{{ auth.error }}</div>
 
-      <div class="form-fields">
+      <div v-if="registrationDisabled" class="feature-disabled-banner">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 9v4M12 17h.01M10.29 3.86l-8.18 14.18A2 2 0 0 0 4 21h16a2 2 0 0 0 1.89-2.96L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        </svg>
+        <span>{{ registrationDisabledMessage }}</span>
+      </div>
+
+      <div class="form-fields" v-if="!registrationDisabled">
         <div class="form-group">
           <label class="form-label">Display Name</label>
           <input class="form-input w-full" type="text" v-model="displayName" placeholder="Your Name" />
@@ -82,11 +89,11 @@
         </button>
       </div>
 
-      <div class="divider">
+      <div class="divider" v-if="!registrationDisabled">
         <span>OR</span>
       </div>
 
-      <div class="social-login">
+      <div class="social-login" v-if="!registrationDisabled">
         <button class="social google" :disabled="auth.loading" @click="handleSocial('google')">
           Continue with Google
         </button>
@@ -118,7 +125,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import {
@@ -127,6 +134,7 @@ import {
   loginWithGithub,
   loginWithFacebook
 } from '@/services/auth'
+import { checkFeature } from '@/services/siteFlags'
 
 const auth        = useAuthStore()
 const router      = useRouter()
@@ -136,6 +144,15 @@ const password    = ref('')
 const confirm     = ref('')
 const showPassword = ref(false)
 const showConfirm  = ref(false)
+
+const registrationDisabled        = ref(false)
+const registrationDisabledMessage = ref('')
+
+onMounted(async () => {
+  const gate = await checkFeature('registration')
+  registrationDisabled.value        = !gate.enabled
+  registrationDisabledMessage.value = gate.message
+})
 
 function validate () {
   if (!displayName.value.trim()) return 'Display name is required'
@@ -150,6 +167,7 @@ function validate () {
 
 async function submit () {
   auth.clearError()
+  if (registrationDisabled.value) { auth.error = registrationDisabledMessage.value || 'Registration is currently closed'; return }
   const err = validate()
   if (err) { auth.error = err; return }
   const ok = await auth.doRegister(email.value.trim(), password.value, displayName.value.trim())

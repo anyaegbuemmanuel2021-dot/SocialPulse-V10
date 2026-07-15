@@ -99,7 +99,48 @@ export async function getAdminLogs (limit = 50, offset = 0) {
   return r.documents
 }
 
-// ── Stats ─────────────────────────────────────────────────────────────────────
+// ── Hashtags ──────────────────────────────────────────────────────────────────
+export async function listHashtags (limit = 50, offset = 0, search = '') {
+  const q = [Query.orderDesc('usage_count'), Query.limit(limit), Query.offset(offset)]
+  if (search) q.push(Query.startsWith('tag', search))
+  return databases.listDocuments(DB, C.HASHTAGS, q)
+}
+
+export async function blockHashtag (adminId, hashtagId) {
+  await databases.updateDocument(DB, C.HASHTAGS, hashtagId, { is_blocked: true, updated_at: now() })
+  await log(adminId, 'block_hashtag', 'hashtag', hashtagId)
+}
+
+export async function unblockHashtag (adminId, hashtagId) {
+  await databases.updateDocument(DB, C.HASHTAGS, hashtagId, { is_blocked: false, updated_at: now() })
+  await log(adminId, 'unblock_hashtag', 'hashtag', hashtagId)
+}
+
+// ── Comments (moderation) ───────────────────────────────────────────────────
+export async function adminDeleteComment (adminId, commentId) {
+  await databases.deleteDocument(DB, C.COMMENTS, commentId)
+  await log(adminId, 'delete_comment', 'comment', commentId)
+}
+
+// ── Admin grants ─────────────────────────────────────────────────────────────
+// NOTE: the real security boundary is the Appwrite `admin` LABEL on the
+// user's account (set only via the server-side grant-admin script — see
+// appwrite/setup/grant-admin.cjs). This `is_admin` field is a mirror for
+// display/query purposes only (e.g. so the Users list can show a badge and
+// so you can filter `Query.equal('is_admin', true)`); it carries no access
+// control weight by itself, since it lives on a document like any other
+// field. Never gate a permission check on this field — always check
+// account.labels on the authenticated session instead.
+export async function markUserAsAdmin (adminId, userId) {
+  await databases.updateDocument(DB, C.USERS, userId, { is_admin: true, updated_at: now() })
+  await log(adminId, 'mark_admin', 'user', userId)
+}
+
+export async function unmarkUserAsAdmin (adminId, userId) {
+  await databases.updateDocument(DB, C.USERS, userId, { is_admin: false, updated_at: now() })
+  await log(adminId, 'unmark_admin', 'user', userId)
+}
+
 export async function getDashboardStats () {
   const [users, videos, reports] = await Promise.all([
     databases.listDocuments(DB, C.USERS,   [Query.limit(1)]),

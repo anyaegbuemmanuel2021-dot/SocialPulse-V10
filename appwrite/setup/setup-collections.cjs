@@ -62,7 +62,7 @@
 
 const { readFileSync } = require('fs')
 const { resolve } = require('path')
-const { Client, Databases, Storage, ID, Permission, Role } = require('node-appwrite')
+const { Client, Databases, Storage, ID, Permission, Role, Query } = require('node-appwrite')
 
 // CJS variant of setup-collections.js — forces node-appwrite's CommonJS
 // build (dist/index.js) instead of the ESM build (dist/index.mjs) that
@@ -72,6 +72,7 @@ const { Client, Databases, Storage, ID, Permission, Role } = require('node-appwr
 // the CJS build does not have this issue. __dirname is native here since
 // this file is loaded as CommonJS regardless of package.json's "type".
 const __dir = __dirname
+let COL // populated from dynamic import of ../schema/collections.js inside main()
 
 // ─────────────────────────────────────────────────────────────────────────
 // SECTION: transient-network retry patch
@@ -679,6 +680,44 @@ async function ensureCollection(clients, dbId, colId, schema, index, total) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────
+// SECTION: site flags (feature kill-switches)
+// ─────────────────────────────────────────────────────────────────────────
+const DEFAULT_SITE_FLAGS = [
+  { key: 'site',         label: 'Entire Site',         message: 'SocialPulse is temporarily down for maintenance. Please check back soon.' },
+  { key: 'registration', label: 'New Registrations',   message: 'New sign-ups are temporarily paused. Please check back soon.' },
+  { key: 'uploads',      label: 'Video/Image Uploads', message: 'Uploads are temporarily disabled while we perform maintenance.' },
+  { key: 'comments',     label: 'Comments',            message: 'Commenting is temporarily disabled.' },
+  { key: 'messaging',    label: 'Messages/DMs',        message: 'Messaging is temporarily unavailable.' },
+]
+
+async function ensureSiteFlags({ databases }, dbId) {
+  section('🚦 Site flags')
+  if (FLAGS.dryRun) {
+    warn('[dry-run] skipped — would seed any missing default flags')
+    return
+  }
+  for (const flag of DEFAULT_SITE_FLAGS) {
+    try {
+      const existing = await databases.listDocuments(dbId, COL.SITE_FLAGS, [Query.equal('key', flag.key)])
+      if (existing.total > 0) {
+        skip(`flag exists: ${flag.key}`)
+        continue
+      }
+      await databases.createDocument(dbId, COL.SITE_FLAGS, ID.unique(), {
+        key: flag.key,
+        label: flag.label,
+        enabled: true,
+        message: flag.message,
+        updated_at: new Date().toISOString(),
+      })
+      created(`flag seeded: ${flag.key}`)
+    } catch (err) {
+      fail(`could not seed flag "${flag.key}": ${err.message}`)
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────
 // SECTION: Storage buckets (with plan-quota awareness)
 // ─────────────────────────────────────────────────────────────────────────
 
@@ -892,7 +931,7 @@ function printSummary({ dbReport, colReports, bucketReport, validationPassed, ro
 
   let SCHEMAS, BUCKET_DEFS
   try {
-    ;({ SCHEMAS, BUCKET_DEFS } = await import('../schema/collections.js'))
+    ;({ SCHEMAS, BUCKET_DEFS, COL } = await import('../schema/collections.js'))
   } catch (err) {
     console.error(`\n${c('red', '❌ Could not load ../schema/collections.js')}`)
     console.error(`   ${err.message}\n`)
@@ -924,6 +963,8 @@ function printSummary({ dbReport, colReports, bucketReport, validationPassed, ro
     }
 
     await ensureBuckets(clients, BUCKET_DEFS || [], bucketReport, config)
+
+    await ensureSiteFlags(clients, config.databaseId)
 
     if (!FLAGS.dryRun) {
       validationPassed = await validateDeployment(clients, config.databaseId, SCHEMAS, BUCKET_DEFS || [])

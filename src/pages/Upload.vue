@@ -3,14 +3,21 @@
     <div class="upload-container">
       <h1>Upload</h1>
 
+      <div v-if="uploadsDisabled" class="feature-disabled-banner">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 9v4M12 17h.01M10.29 3.86l-8.18 14.18A2 2 0 0 0 4 21h16a2 2 0 0 0 1.89-2.96L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        </svg>
+        <span>{{ uploadsDisabledMessage }}</span>
+      </div>
+
       <!-- Drop zone -->
       <div
         class="drop-zone"
-        :class="{ 'drag-over': dragging, 'has-file': mediaFile }"
-        @dragover.prevent="dragging = true"
+        :class="{ 'drag-over': dragging, 'has-file': mediaFile, 'is-disabled': uploadsDisabled }"
+        @dragover.prevent="!uploadsDisabled && (dragging = true)"
         @dragleave.prevent="dragging = false"
-        @drop.prevent="onDrop"
-        @click="fileInput?.click()"
+        @drop.prevent="!uploadsDisabled && onDrop($event)"
+        @click="!uploadsDisabled && fileInput?.click()"
       >
         <input ref="fileInput" type="file" accept="video/mp4,video/webm,video/quicktime,video/x-msvideo,image/jpeg,image/png,image/webp" hidden @change="onFileChange" />
         <div v-if="!mediaFile" class="drop-inner">
@@ -90,15 +97,25 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { createVideo, uploadVideoFile, uploadImagePost, uploadThumbnail } from '@/services/videos'
+import { checkFeature } from '@/services/siteFlags'
 
 const router    = useRouter()
 const auth      = useAuthStore()
 const fileInput = ref(null)
 const thumbInput= ref(null)
+
+const uploadsDisabled        = ref(false)
+const uploadsDisabledMessage = ref('')
+
+onMounted(async () => {
+  const gate = await checkFeature('uploads')
+  uploadsDisabled.value        = !gate.enabled
+  uploadsDisabledMessage.value = gate.message
+})
 
 const VIDEO_TYPES = ['video/mp4', 'video/webm', 'video/quicktime', 'video/x-msvideo']
 const IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp']
@@ -178,6 +195,7 @@ const parseHashtags = () => hashtagInput.value.trim().split(/\s+/).filter(t => t
 
 async function submit () {
   error.value = ''
+  if (uploadsDisabled.value)      { error.value = uploadsDisabledMessage.value || 'Uploads are currently disabled'; return }
   if (!mediaFile.value)          { error.value = 'Please select a video or image file'; return }
   if (!form.value.title.trim())  { error.value = 'Title is required'; return }
 
